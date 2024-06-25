@@ -59,7 +59,7 @@ export default function Newsletter() {
           All certificates in one place
         </Text>
 
-        <Box padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }} width={{ md"30%", xs : '100%' }}>
+        <Box padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }} width={{ md:"30%", xs : '100%' }}>
           <Formik 
             initialValues={initialValues}
             validationSchema={newsletterValidation}
