@@ -7,7 +7,7 @@ export default function Roadmap() {
       sx={{
         background: {
           md: "url('/svgs/Roadmap-Bg.png') #000 center center / cover no-repeat",
-          xs: "url('/svgs/Roadmap-Bg.png') #000 bottom center / auto no-repeat",
+          xs: "url('/svgs/Roadmap-Bg.png') #000 bottom center / cover no-repeat",
         },
         width: "100%",
         display: "flex",

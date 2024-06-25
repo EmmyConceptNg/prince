@@ -5,15 +5,16 @@ export default function Hero() {
   return (
     <Box
       sx={{
-        mx: { md: 10, xs: 2 },
+        mx: { md: 10, xs: 0 },
         background: {
           md: "url('/svgs/Hero-Bg.svg') top center / contain no-repeat",
-          xs: "url('/svgs/Hero-Bg.svg') top center / auto no-repeat",
+          xs: "url('/svgs/Hero-BgSm.svg') bottom center / cover no-repeat",
         },
-        height: "100%",
+        height:{md:'100%'},
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
+        alignItems: {md:"flex-start", xs:'center'},
+        
       }}
     >
       <Text
@@ -29,7 +30,7 @@ export default function Hero() {
             sm: "center",
             xs: "center",
           },
-          mx: { md: "0px", lg: "150px", xl: "300px", sm: "0px", xs: "0px" },
+          mx: { md: "0px", lg: "150px", xl: "300px", sm: "0px", xs: "30px" },
           mt: 10,
         }}
       >
@@ -47,7 +48,7 @@ export default function Hero() {
             sm: "center",
             xs: "center",
           },
-          mx: { md: "0px", lg: "150px", xl: "500px", sm: "0px", xs: "0px" },
+          mx: { md: "0px", lg: "150px", xl: "500px", sm: "20px", xs: "30px" },
           mt: 5,
         }}
       >

@@ -9,10 +9,10 @@ export default function Community() {
         mx: { md: 10, xs: 2 },
         background: {
           md: "url('/svgs/Community-Bg.svg') top center / contain no-repeat",
-          xs: "url('/svgs/Community-Bg.svg') top center / auto no-repeat",
+          xs: "url('/svgs/Community-BgSm.svg') top center / auto no-repeat",
         },
 
-        height: "100%",
+        height: {md:"100%", xs:"50%"},
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
