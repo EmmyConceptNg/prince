@@ -4,34 +4,26 @@ import { Form, Formik } from "formik";
 import { newsletterValidation } from "../../utils/Index";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Newsletter() {
      const initialValues = {
        email: "",
      };
      const handleNewsLetter = (values, actions) => {};
+
+     const navigate = useNavigate()
   
   return (
-    <Box
-      sx={{
-        background: {
-          md: "url('/svgs/Roadmap-Bg.png') #000 center center / cover no-repeat",
-          xs: "url('/svgs/Roadmap-Bg.png') #000 bottom center / auto no-repeat",
-        },
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        pb: { md: 20, xs: 0 },
-        height: "100%",
-      }}
-    >
+    <>
       <Stack
         sx={{
-          border: "1px solid #000",
+          border: "1px solid #10281B",
           borderRadius: "16px",
-          width: "100%",
+          
           mx: { lg: "100px", md: "100px", xs: "0px" },
           py: 10,
+          bgcolor: "#051B0F4F"
         }}
         mt={10}
         justifyContent="space-between"
@@ -59,15 +51,19 @@ export default function Newsletter() {
           All certificates in one place
         </Text>
 
-        <Box padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }} width={{ md:"30%", xs : '100%' }}>
-          <Formik 
+        <Box
+          padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }}
+          px={{ lg: "500px" }}
+        >
+          <Formik
             initialValues={initialValues}
             validationSchema={newsletterValidation}
             onSubmit={handleNewsLetter}
           >
             {({ isSubmitting }) => (
               <Form>
-                <Stack spacing={2}
+                <Stack
+                  spacing={2}
                   direction={{ md: "row", xs: "column" }}
                   alignItems="center"
                   justifyContent="center"
@@ -77,7 +73,6 @@ export default function Newsletter() {
                     sx={{ bgcolor: "transparent" }}
                     height="48px"
                     name="email"
-                    
                     placeholder="Enter your email"
                     aria-label="enter your email"
                   />
@@ -101,14 +96,26 @@ export default function Newsletter() {
               fw="400"
               fs={{ md: "14px", lg: "14px", sm: "12px", xs: "12px" }}
               sx={{
-                textAlign: "left",
+                textAlign: { md: "left", xs: "center" },
+                mt: 2,
               }}
             >
-              We care about your data in our privacy policy.
+              We care about your data in our{" "}
+              <span
+                style={{ textDecoration: "underline", cursor: "pointer" }}
+                onClick={() => {
+                  navigate("privacy");
+                }}
+              >
+                privacy policy
+              </span>
+              .
             </Text>
           </Box>
         </Box>
       </Stack>
-    </Box>
+
+     
+    </>
   );
 }

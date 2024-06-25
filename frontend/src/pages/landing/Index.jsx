@@ -24,6 +24,29 @@ export default function Home() {
           <Roadmap />
           <Lead />
           <WhyUs />
+          <Box display={{ md: 'block', xs:'none' }}
+            sx={{
+              position: "absolute",
+              width: "955.72px",
+              height: "527.46px",
+              top: "3626.09px",
+              background: "#C0F497",
+              filter: "blur(150px)", zIndex:'-1',
+              transform: "rotate(173.52deg)",
+            }}
+          />
+          <Box display={{ md: 'block', xs:'none' }}
+            sx={{
+              position: "absolute",
+              width: "517.14px",
+              height: "273.03px",
+              left: "400.24px",
+              top: "3726.09px",
+              background: "#2DDB81",
+              filter: "blur(100px)", zIndex:'-1',
+              transform: "rotate(-178.32deg)",
+            }}
+          />
           <Newsletter />
           <Community />
           <Footer />

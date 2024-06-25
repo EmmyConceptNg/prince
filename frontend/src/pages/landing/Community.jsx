@@ -6,10 +6,10 @@ export default function Community() {
   return (
     <Box
       sx={{
-        mx: { md: 10, xs: 2 },
+        mx: { md: 10, xs: 0 },
         background: {
           md: "url('/svgs/Community-Bg.svg') top center / contain no-repeat",
-          xs: "url('/svgs/Community-BgSm.svg') top center / auto no-repeat",
+          xs: "url('/svgs/Community-BgSm.svg') top center / cover no-repeat",
         },
 
         height: {md:"100%", xs:"50%"},
