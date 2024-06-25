@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import Text from "../../components/Text";
+import Button from "../../components/Button";
 
 export default function Hero() {
   return (
@@ -10,11 +11,10 @@ export default function Hero() {
           md: "url('/svgs/Hero-Bg.svg') top center / contain no-repeat",
           xs: "url('/svgs/Hero-BgSm.svg') bottom center / cover no-repeat",
         },
-        height:{md:'100%'},
+        height: { md: "100%" },
         display: "flex",
         flexDirection: "column",
-        alignItems: {md:"flex-start", xs:'center'},
-        
+        alignItems: { md: "center", xs: "center" },
       }}
     >
       <Text
@@ -58,6 +58,17 @@ export default function Hero() {
         security certifications can feel like trying to solve a riddle wrapped
         in a mystery inside an enigma.
       </Text>
+      <Box display="flex" justifyContent="center">
+        <Button
+          sx={{ mt: 5 }}
+          type="submit"
+          height="56px"
+          width="280px"
+          variant="contained"
+        >
+          Join the waitlist
+        </Button>
+      </Box>
     </Box>
   );
 }

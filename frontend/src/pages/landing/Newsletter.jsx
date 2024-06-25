@@ -21,7 +21,7 @@ export default function Newsletter() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        pb: {md:20, xs:0},
+        pb: { md: 20, xs: 0 },
         height: "100%",
       }}
     >
@@ -35,7 +35,6 @@ export default function Newsletter() {
         }}
         mt={10}
         justifyContent="space-between"
-        alignItems="center"
         spacing={2}
       >
         <Text
@@ -60,48 +59,54 @@ export default function Newsletter() {
           All certificates in one place
         </Text>
 
-        <Formik
-          initialValues={initialValues}
-          validationSchema={newsletterValidation}
-          onSubmit={handleNewsLetter}
-        >
-          {({ isSubmitting }) => (
-            <Form>
-              <Stack
-                direction={{ md: "row", xs: "column" }}
-                alignItems="center"
-              >
-                <Input
-                  sx={{ bgcolor: "transparent" }}
-                  height="48px"
-                  name="email"
-                  placeholder="Enter your email"
-                  aria-label="enter your email"
-                />
-                <Button
-                  type="submit"
-                  loading={isSubmitting}
-                  height="48px"
-                  width="220px"
-                  variant="contained"
-                >
-                  Join the waitlist
-                </Button>
-              </Stack>
-            </Form>
-          )}
-        </Formik>
-        <Box display="flex" justifyContent="flex-start">
-          <Text
-            color="#fff"
-            fw="400"
-            fs={{ md: "14px", lg: "14px", sm: "12px", xs: "12px" }}
-            sx={{
-              textAlign: "left",
-            }}
+        <Box padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }} width={{ md"30%", xs : '100%' }}>
+          <Formik 
+            initialValues={initialValues}
+            validationSchema={newsletterValidation}
+            onSubmit={handleNewsLetter}
           >
-            We care about your data in our privacy policy.
-          </Text>
+            {({ isSubmitting }) => (
+              <Form>
+                <Stack spacing={2}
+                  direction={{ md: "row", xs: "column" }}
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                >
+                  <Input
+                    sx={{ bgcolor: "transparent" }}
+                    height="48px"
+                    name="email"
+                    
+                    placeholder="Enter your email"
+                    aria-label="enter your email"
+                  />
+                  <Button
+                    type="submit"
+                    loading={isSubmitting}
+                    height="48px"
+                    width="300px"
+                    variant="contained"
+                  >
+                    Join the waitlist
+                  </Button>
+                </Stack>
+              </Form>
+            )}
+          </Formik>
+
+          <Box display="flex" justifyContent="flex-start">
+            <Text
+              color="#FFFFFF59"
+              fw="400"
+              fs={{ md: "14px", lg: "14px", sm: "12px", xs: "12px" }}
+              sx={{
+                textAlign: "left",
+              }}
+            >
+              We care about your data in our privacy policy.
+            </Text>
+          </Box>
         </Box>
       </Stack>
     </Box>

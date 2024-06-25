@@ -10,7 +10,7 @@ export default function NavBar({ ffor = "" }) {
       <Box
         flexGrow={1}
         sx={{
-          display: { xs: "block", md: "block", lg: "flex" },
+          display: { xs: "block", md: "flex", lg: "flex" },
           justifyContent: "flex-end",
         }}
       >

@@ -50,9 +50,7 @@ export default function Header(props) {
           <Box
             width="100%"
             sx={{
-              display: {
-                lg: "flex",
-              },  alignItems: "center"
+              display: 'flex',  alignItems: "center"
             }}
           >
             <NavBar />
