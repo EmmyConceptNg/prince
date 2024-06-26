@@ -101,10 +101,9 @@ function Desktop (){
         }}
       >
         <Stack
-          spacing={20}
           py={7}
           direction="row"
-          justifyContent="center"
+          justifyContent="space-between"
           alignItems="center"
         >
           {[
