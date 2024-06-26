@@ -101,7 +101,7 @@ function Desktop (){
         }}
       >
         <Stack
-          spacing={10}
+          spacing={20}
           p={7}
           direction="row"
           justifyContent="center"
