@@ -102,7 +102,7 @@ function Desktop (){
       >
         <Stack
           spacing={20}
-          p={7}
+          py={7}
           direction="row"
           justifyContent="center"
           alignItems="center"
