@@ -17,13 +17,13 @@ export default function Newsletter() {
   return (
     <>
       <Stack
+          
         sx={{
           border: "1px solid #10281B",
           borderRadius: "16px",
-          
-          mx: { lg: "100px", md: "100px", xs: "0px" },
+mx:{ xl:'100px', lg:10, xs : 2 },
           py: 10,
-          bgcolor: "#051B0F4F"
+          bgcolor: "#051B0F4F",
         }}
         mt={10}
         justifyContent="space-between"
@@ -52,8 +52,8 @@ export default function Newsletter() {
         </Text>
 
         <Box
-          padding={{ md: "64px, 154px, 64px, 154px", xs: 2 }}
-          px={{ lg: "500px" }}
+          
+          px={{ xl: "480px", md: '200px' }}
         >
           <Formik
             initialValues={initialValues}
@@ -73,6 +73,7 @@ export default function Newsletter() {
                     sx={{ bgcolor: "transparent" }}
                     height="48px"
                     name="email"
+                    
                     placeholder="Enter your email"
                     aria-label="enter your email"
                   />
@@ -97,7 +98,7 @@ export default function Newsletter() {
               fs={{ md: "14px", lg: "14px", sm: "12px", xs: "12px" }}
               sx={{
                 textAlign: { md: "left", xs: "center" },
-                mt: 2,
+                mt: 2, mx:{sm :'auto', md:0}, 
               }}
             >
               We care about your data in our{" "}
@@ -114,8 +115,6 @@ export default function Newsletter() {
           </Box>
         </Box>
       </Stack>
-
-     
     </>
   );
 }

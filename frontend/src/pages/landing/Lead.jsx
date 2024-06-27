@@ -95,13 +95,16 @@ function Desktop (){
     <Box sx={{}} width="100%">
       <Stack
         sx={{
-          mx: { lg: "100px", md: "100px", xs: "0px" },
+          py:5,
+          px: { lg: "100px", md: "100px", xs: "0px" },
           border: "1px solid #10281B",
           borderRadius: "16px",
         }}
       >
         <Stack
+          
           py={7}
+          
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -142,7 +145,7 @@ function Desktop (){
         </Stack>
         <Box
           sx={{
-            mx: { lg: "100px", md: "100px", xs: "0px" },
+            pl: { lg: "30px", md: "30px", xs: "0px" },
             display: "flex",
             justifyContent: "center",
           }}

@@ -12,10 +12,13 @@ const InputField = styled(OutlinedInput)(({ theme, isPin, height, sx }) => ({
     height: height,
     padding: "0 14px",
     borderRadius: "8px",
-    border: isPin || (sx.bgcolor && "1px solid #163927"),
+    border: isPin || (sx.bgcolor && "1px solid #10281B"),
     backgroundColor: sx ? sx.bgcolor : "#fff",
     color: isPin ? "#FF9D43" : "#667085",
     fontSize: isPin && "48px",
+    "&::placeholder": {
+      color: "#9AE1BC",
+    },
   },
   "& .MuiOutlinedInput-notchedOutline": {
     top: 0,
@@ -91,6 +94,7 @@ export default function Input({
           isPasswordField ? (
             <InputAdornment position="end">
               <IconButton
+                sx={{ color: "#9AE1BC" }}
                 aria-label={`toggle ${name} visibility`}
                 onClick={() => handleClickShowPassword(name)}
                 onMouseDown={handleMouseDownPassword}
