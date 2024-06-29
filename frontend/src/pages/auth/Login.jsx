@@ -89,7 +89,7 @@ navigate("/dashboard");
   }, [googleUser]);
 
   return (
-    <Box bgcolor="" maxHeight="100vh">
+    <Box height="100vh" ml={{ lg: 20, xs: 0 }}>
       <ToastContainer />
       <Grid container spacing={1} justifyContent="space-between">
         <Grid item md={12} lg={7} xs={12} sm={12}>

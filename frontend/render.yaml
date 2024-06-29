@@ -1,7 +1,6 @@
 services:
   - type: web
     name: prince-app
-    env: static
     staticPublishPath: dist
     routes:
       - type: rewrite
