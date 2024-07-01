@@ -122,7 +122,7 @@ export default function Signup() {
                 >
                   Sign Up
                 </Text>
-                <Text fw="400" fs="16px" color="#667085">
+                <Text fw="400" fs="16px" color="#fff">
                   Welcome back! Please enter your details.
                 </Text>
                 <Formik
@@ -180,7 +180,7 @@ export default function Signup() {
                 <Stack direction="row" alignItems="center">
                   <Checkbox
                     sx={{
-                      color: "#2DDB81",
+                      color: "#10281B",
                       "&.Mui-checked": {
                         color: "#2DDB81",
                       },
@@ -196,7 +196,7 @@ export default function Signup() {
                     width="100%"
                     height="44px"
                     variant="outlined"
-                    color="#344054"
+                    color="#D0D5DD"
                     startIcon={<Icon icon="devicon:google" />}
                   >
                     Sign up with Google
@@ -205,7 +205,7 @@ export default function Signup() {
                 <Box display="flex" justifyContent={"center"}>
                   <Text
                     sx={{ textAlign: "center" }}
-                    color="#475467"
+                    color="#fff"
                     fs="14px"
                     fw="400"
                   >

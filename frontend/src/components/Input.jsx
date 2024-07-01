@@ -68,7 +68,7 @@ export default function Input({
     <FormControl fullWidth sx={{ height }}>
       {label && (
         <label htmlFor="password">
-          <Text fw="500" fs="14px" ml={5} color="#344054">
+          <Text fw="500" fs="14px" ml={5} color="#fff">
             {label}
             <span style={{ color: "red", marginLeft: 2 }}>
               {required && "*"}

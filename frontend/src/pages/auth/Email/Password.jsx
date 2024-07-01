@@ -71,7 +71,7 @@ export default function Password() {
                 >
                   Forgot Password
                 </Text>
-                <Text fw="400" fs="16px" color="#667085">
+                <Text fw="400" fs="16px" color="#fff">
                   No worries, we’ll send you reset instructions.
                 </Text>
                 <Formik
