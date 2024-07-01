@@ -1,17 +1,18 @@
 import { Box, Stack } from "@mui/material";
 
-import Text from "../../../components/Text";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
+
 import { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
 
-import { useSelector } from "react-redux";
+
+import Text from "../../../components/Text";
+import Button from "../../../components/Button";
+import Footer from "../../landing/Footer";
 
 
 export default function VerificationLink() {
   const [sendMailBtn, setSendMailBtn] = useState(false);
-  const user = useSelector(state => state.user.details)
+  
 
 
   const handleResendMail = () =>{
@@ -20,17 +21,20 @@ export default function VerificationLink() {
   }
 
 
-  return (
+  return (<>
     <Box display="flex" justifyContent="center" component="form" mt={10}>
       <Box sx={{ mx: "auto" }} width={{ xs: "343px", sm: "360px" }}>
+        <Box display="flex" justifyContent="center" mb="100px">
+          <Box component="img" src="/svgs/Logo.svg" width="242px" />
+        </Box>
         <Stack spacing={3} justifyContent="center" alignItems="center">
-          {/* <MailIcon /> */}
+          <Box component="img" src="/svgs/Mail.svg" width="56px" />
 
-          <Text fw="550" fs="30px" color="#131C30">
+          <Text fw="600" fs="30px" color="#fff">
             Check your email
           </Text>
-          <Text fw="400" fs="16px" color="#475467" sx={{ textAlign: "center" }}>
-            We sent averification link to {user.email}
+          <Text fw="400" fs="16px" color="#fff" sx={{ textAlign: "center" }}>
+            We sent a verification link to olivia@untitledui.com
           </Text>
           <Button
             to="/verification/email"
@@ -42,26 +46,21 @@ export default function VerificationLink() {
             Enter code manually
           </Button>
           <Box display="flex">
-            <Text
-              sx={{ textAlign: "center" }}
-              color="#475467"
-              fs="14px"
-              fw="400"
-            >
+            <Text sx={{ textAlign: "center" }} color="#fff" fs="14px" fw="400">
               Didn’t receive the email?
             </Text>
             {!sendMailBtn ? (
               <Text
-                background="linear-gradient(180deg, #FF8934 0%, #FF3CD4 100%)"
+                background="linear-gradient(180deg, #2DDB81 0%, #2DDB81 100%)"
                 fs="14px"
                 fw="700"
                 onClick={() => {
                   handleResendMail();
                 }}
                 sx={{
+                  color: "#2DDB81",
                   textAlign: "center",
                   marginLeft: 1,
-                  color: "#FF9D43",
                   cursor: "pointer",
                 }}
               >
@@ -69,7 +68,7 @@ export default function VerificationLink() {
               </Text>
             ) : (
               <Text
-                background="linear-gradient(180deg, #FF8934 0%, #FF3CD4 100%)"
+                background="linear-gradient(180deg, #2DDB81 0%, #2DDB81 100%)"
                 fs="14px"
                 fw="700"
                 sx={{
@@ -84,16 +83,20 @@ export default function VerificationLink() {
             )}
           </Box>
           <Button
-            sx={{ color: "#475467" }}
+            color="#fff"
             width="100%"
             heigh="44px"
             type="button"
             startIcon={<ArrowBack />}
+            to="/signup"
           >
             Back to log in
           </Button>
         </Stack>
       </Box>
     </Box>
+    <Box sx={{ mx : {lg : '100px', xs : 0}, mt:12 }}>
+        <Footer logo={false} />
+      </Box></>
   );
 }

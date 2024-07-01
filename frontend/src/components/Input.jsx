@@ -7,14 +7,14 @@ import { useField } from "formik";
 
 
 
-const InputField = styled(OutlinedInput)(({ theme, isPin, height, sx }) => ({
+const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
   "& .MuiOutlinedInput-input": {
     height: height,
     padding: "0 14px",
     borderRadius: "8px",
-    border: isPin || (sx.bgcolor && "1px solid #10281B"),
+    border: isPin ? "1px solid #2DDB81" : sx.bgcolor && "1px solid #10281B",
     backgroundColor: sx ? sx.bgcolor : "#fff",
-    color: isPin ? "#FF9D43" : "#667085",
+    color: isPin ? "#2DDB81" : "#667085",
     fontSize: isPin && "48px",
     "&::placeholder": {
       color: "#9AE1BC",
