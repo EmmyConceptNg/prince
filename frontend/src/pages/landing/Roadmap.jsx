@@ -42,7 +42,7 @@ export default function Roadmap() {
             </span>
             Less of a Puzzle!
           </p>
-          <Box disply="flex" pr="550px">
+          <Box disply="flex" pr={{ xs: 0, md: "300px", lg: '"550px"' }}>
             <p
               style={{
                 fontSize: "18px",

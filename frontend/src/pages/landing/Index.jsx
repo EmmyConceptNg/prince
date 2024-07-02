@@ -19,10 +19,8 @@ export default function Home() {
       <Box>
         <Box width="100%" bgcolor="" pb={10} pt={2}>
           <Header />
-
           <Hero />
           <Roadmap />
-
           <WhyUs />
           <Box
             display={{ md: "block", xs: "none" }}

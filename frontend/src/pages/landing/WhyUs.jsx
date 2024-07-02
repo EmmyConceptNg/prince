@@ -13,7 +13,12 @@ export default function WhyUs() {
         px: { lg: "100px", md: "100px", xs: "10px" },
       }}
     >
-      <Grid container alignItems="center" justifyContent="space-between" spacing={15}>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="space-between"
+        spacing={15}
+      >
         <Grid item md={6} lg={6} xs={12} sm={12}>
           <Box
             component="img"
@@ -97,7 +102,7 @@ export default function WhyUs() {
       <Grid
         container
         alignItems="center"
-        spacing={{ md: 0, xs: 5 }}
+        spacing={{ md: 10, lg:20, xs: 5 }}
         justifyContent={{ md: "space-between", xs: "center" }}
       >
         <Grid item md={6} lg={6} xs={12} sm={12}>
@@ -173,8 +178,8 @@ export default function WhyUs() {
           <Box
             component="img"
             src="/svgs/Iphone.svg"
-            heigth="100%"
-            width="471.87px"
+            heigth="471.87px"
+            
           />
         </Grid>
       </Grid>

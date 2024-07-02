@@ -1,18 +1,23 @@
-import { FormControl, IconButton, InputAdornment, OutlinedInput, styled } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  OutlinedInput,
+  styled,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import Text from "./Text";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { useField } from "formik";
 
-
-
 const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
   "& .MuiOutlinedInput-input": {
     height: height,
     padding: "0 14px",
     borderRadius: "8px",
-    border: isPin ? "1px solid #2DDB81" : sx.bgcolor && "1px solid #10281B",
+    border: "1px solid",
+    outline: "none",
     backgroundColor: sx ? sx.bgcolor : "#fff",
     color: isPin ? "#2DDB81" : "#667085",
     fontSize: isPin && "48px",
@@ -21,7 +26,8 @@ const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
     },
   },
   "& .MuiOutlinedInput-notchedOutline": {
-    top: 0,
+    border: "none",
+    outline: "none",
   },
   "& .MuiInputLabel-outlined": {
     transform: "translate(14px, 18px) scale(1)",
@@ -31,22 +37,23 @@ const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
   },
 }));
 
-
-
-
-
 export default function Input({
-  required = true, isPin=false,
+  required = true,
+  isPin = false,
   id,
   label,
-  
-  placeholder, onInput, inputProp,
-  readOnly=false,
-  name, height="44px",
-  width, type="text",  details,
-  sx, defaultValue
+  placeholder,
+  onInput,
+  inputProp,
+  readOnly = false,
+  name,
+  height = "44px",
+  width,
+  type = "text",
+  details,
+  sx,
+  defaultValue,
 }) {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = (field) => {
@@ -60,9 +67,9 @@ export default function Input({
     event.preventDefault();
   };
 
-   const [field, meta] = useField(name);
-    const isPasswordField = type === "password";
-    const inputType = isPasswordField && showPassword[name] ? "text" : type;
+  const [field, meta] = useField(name);
+  const isPasswordField = type === "password";
+  const inputType = isPasswordField && showPassword[name] ? "text" : type;
 
   return (
     <FormControl fullWidth sx={{ height }}>
@@ -105,7 +112,6 @@ export default function Input({
             </InputAdornment>
           ) : null
         }
-        // value={value}
         placeholder={placeholder}
       />
       {meta.touched && meta.error ? (
