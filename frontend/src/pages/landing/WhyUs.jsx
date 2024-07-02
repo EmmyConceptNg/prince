@@ -5,16 +5,22 @@ export default function WhyUs() {
   return (
     <Box
       sx={{
-        
-        display: "flex", flexDirection:'column', gap:20,
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
         justifyContent: "center",
         pt: 20,
         px: { lg: "100px", md: "100px", xs: "10px" },
       }}
     >
-      <Grid container alignItems="center" justifyContent="space-between">
+      <Grid container alignItems="center" justifyContent="space-between" spacing={15}>
         <Grid item md={6} lg={6} xs={12} sm={12}>
-          <Box component="img" src="/svgs/Laptop.svg" heigth="100%" width="100%" />
+          <Box
+            component="img"
+            src="/svgs/Laptop.svg"
+            heigth="354.16px"
+            width="100%"
+          />
         </Grid>
         <Grid item md={6} lg={6} xs={12} sm={12}>
           <Box
@@ -88,7 +94,12 @@ export default function WhyUs() {
       </Grid>
 
       {/* Why Us 2 */}
-      <Grid container alignItems="center" spacing={{ md: 0, xs: 5 }} justifyContent={{ md:"space-between", xs: "center" }}>
+      <Grid
+        container
+        alignItems="center"
+        spacing={{ md: 0, xs: 5 }}
+        justifyContent={{ md: "space-between", xs: "center" }}
+      >
         <Grid item md={6} lg={6} xs={12} sm={12}>
           <Box
             bgcolor="#22242F"
@@ -159,7 +170,12 @@ export default function WhyUs() {
           </Text>
         </Grid>
         <Grid item md={6} lg={6} xs={12} sm={12}>
-          <Box component="img" src="/svgs/Iphone.svg" heigth="100%" width="100%" />
+          <Box
+            component="img"
+            src="/svgs/Iphone.svg"
+            heigth="100%"
+            width="471.87px"
+          />
         </Grid>
       </Grid>
     </Box>

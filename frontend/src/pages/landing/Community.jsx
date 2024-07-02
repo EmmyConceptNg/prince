@@ -8,7 +8,7 @@ export default function Community() {
       sx={{
         mx: { md: 10, xs: 0 },
         background: {
-          md: "url('/svgs/Community-Bg.svg') top center / contain no-repeat",
+          md: "url('/svgs/Community-Bg.svg') top center / cover no-repeat",
           xs: "url('/svgs/Community-BgSm.svg') top center / cover no-repeat",
         },
 
@@ -17,6 +17,7 @@ export default function Community() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        pt: 40,
       }}
     >
       <Text

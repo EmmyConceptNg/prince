@@ -17,12 +17,12 @@ export default function Home() {
         <title>Prince - Home</title>
       </Helmet>
       <Box>
-        <Box width="100%" height="100vh" bgcolor="#000" pb={10} pt={2}>
+        <Box width="100%"  bgcolor="#000" pb={10} pt={2}>
           <Header />
 
           <Hero />
           <Roadmap />
-          <Lead />
+          
           <WhyUs />
           <Box display={{ md: 'block', xs:'none' }}
             sx={{

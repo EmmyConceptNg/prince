@@ -5,19 +5,19 @@ export default function Lead() {
   return (
     <Box
       sx={{
-        background: "#000 ",
+        
         width: "100%",
         display: "flex",
         justifyContent: "center",
       }}
     >
       {/* Desktop */}
-      <Box display={{ md: "block", xs: "none" }}>
+      <Box display={{ md: "block", xs: "none" }}  mt={15}>
         <Desktop />
       </Box>
 
       {/* Mobile */}
-      <Box display={{ md: "none", xs: "block" }}>
+      <Box display={{ md: "none", xs: "block" }} mt={10}>
         <Mobile />
       </Box>
     </Box>
@@ -30,7 +30,7 @@ function Mobile (){
       <Stack
         sx={{
           mx: { lg: "100px", md: "100px", xs: "0px" },
-          border: "1px solid #10281B",
+          border: "1px solid #10281B", bgcolor:"#051B0F4F",
           borderRadius: "16px",
         }}
       >
@@ -97,7 +97,7 @@ function Desktop (){
         sx={{
           py:5,
           px: { lg: "100px", md: "100px", xs: "0px" },
-          border: "1px solid #10281B",
+          border: "1px solid #10281B", bgcolor:"#051B0F4F",
           borderRadius: "16px",
         }}
       >

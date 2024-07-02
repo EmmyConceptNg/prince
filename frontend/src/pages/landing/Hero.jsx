@@ -6,16 +6,17 @@ export default function Hero() {
   return (
     <Box
       sx={{
-        mx: { md: 10, xs: 0 },
+        
         background: {
           md: "url('/svgs/Hero-Bg.svg') top center / contain no-repeat",
           xs: "url('/svgs/Hero-BgSm.svg') bottom center / cover no-repeat",
         },
-        height: { md: "100%" },
         display: "flex",
         flexDirection: "column",
         alignItems: { md: "center", xs: "center" },
       }}
+
+      pb={40}
     >
       <Text
         color="#fff"
