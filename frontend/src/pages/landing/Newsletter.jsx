@@ -7,23 +7,22 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function Newsletter() {
-     const initialValues = {
-       email: "",
-     };
-     const handleNewsLetter = (values, actions) => {};
+  const initialValues = {
+    email: "",
+  };
+  const handleNewsLetter = (values, actions) => {};
 
-     const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   return (
     <>
       <Stack
-          
         sx={{
           border: "1px solid #10281B",
           borderRadius: "16px",
-mx:{ xl:'100px', lg:10, xs : 2 },
+          mx: { xl: "100px", lg: 10, xs: 2 },
           py: 10,
-          bgcolor: "#051B0F4F",
+          bgcolor: "#051B0F4F", zIndex : '999px',
         }}
         mt={10}
         justifyContent="space-between"
@@ -51,10 +50,7 @@ mx:{ xl:'100px', lg:10, xs : 2 },
           All certificates in one place
         </Text>
 
-        <Box
-          
-          px={{ xl: "480px", md: '200px' }}
-        >
+        <Box px={{ xl: "480px", md: "200px" }}>
           <Formik
             initialValues={initialValues}
             validationSchema={newsletterValidation}
@@ -73,7 +69,6 @@ mx:{ xl:'100px', lg:10, xs : 2 },
                     sx={{ bgcolor: "transparent" }}
                     height="48px"
                     name="email"
-                    
                     placeholder="Enter your email"
                     aria-label="enter your email"
                   />
@@ -98,7 +93,8 @@ mx:{ xl:'100px', lg:10, xs : 2 },
               fs={{ md: "14px", lg: "14px", sm: "12px", xs: "12px" }}
               sx={{
                 textAlign: { md: "left", xs: "center" },
-                mt: 2, mx:{sm :'auto', md:0}, 
+                mt: 2,
+                mx: { sm: "auto", md: 0 },
               }}
             >
               We care about your data in our{" "}

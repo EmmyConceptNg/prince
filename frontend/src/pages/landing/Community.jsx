@@ -18,6 +18,7 @@ export default function Community() {
         alignItems: "center",
         justifyContent: "center",
         pt: 40,
+        mt:20 
       }}
     >
       <Text

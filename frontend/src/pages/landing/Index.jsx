@@ -17,34 +17,38 @@ export default function Home() {
         <title>Prince - Home</title>
       </Helmet>
       <Box>
-        <Box width="100%"  bgcolor="#000" pb={10} pt={2}>
+        <Box width="100%" bgcolor="" pb={10} pt={2}>
           <Header />
 
           <Hero />
           <Roadmap />
-          
+
           <WhyUs />
-          <Box display={{ md: 'block', xs:'none' }}
+          <Box
+            display={{ md: "block", xs: "none" }}
             sx={{
               position: "absolute",
               width: "955.72px",
               height: "527.46px",
-              top: "3626.09px",
+              top: "3200px",
               background: "#C0F497",
-              filter: "blur(150px)", zIndex:'-1',
+              filter: "blur(150px)",
               transform: "rotate(173.52deg)",
+              zIndex: "-1",
             }}
           />
-          <Box display={{ md: 'block', xs:'none' }}
+          <Box
+            display={{ md: "block", xs: "none" }}
             sx={{
               position: "absolute",
               width: "517.14px",
               height: "273.03px",
               left: "400.24px",
-              top: "3726.09px",
+              top: "3200.09px",
               background: "#2DDB81",
-              filter: "blur(100px)", zIndex:'-1',
+              filter: "blur(100px)",
               transform: "rotate(-178.32deg)",
+              zIndex: "-1",
             }}
           />
           <Newsletter />
