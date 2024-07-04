@@ -133,7 +133,7 @@ navigate("/dashboard");
                   {({ isSubmitting }) => (
                     <Form>
                       <Stack
-                        spacing={5}
+                        spacing={7}
                         mt={2}
                         sx={{ width: { lg: "520px", sm: "450px" } }}
                       >

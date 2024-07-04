@@ -21,6 +21,7 @@ export default function Footer({logo=true, }) {
      sx={{
        mx: { md: logo ? 10 : 3, xs: 2 },
        pb: logo ? 10 : 1,
+       pt: logo && 5,
      }}
    >
      {logo && (

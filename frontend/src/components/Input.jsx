@@ -16,7 +16,7 @@ const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
     height: height,
     padding: "0 14px",
     borderRadius: "8px",
-    border: "1px solid",
+    border: "1px solid #10281B",
     outline: "none",
     backgroundColor: sx ? sx.bgcolor : "#fff",
     color: isPin ? "#2DDB81" : "#667085",
@@ -77,9 +77,6 @@ export default function Input({
         <label htmlFor="password">
           <Text fw="500" fs="14px" ml={5} color="#fff">
             {label}
-            <span style={{ color: "red", marginLeft: 2 }}>
-              {required && "*"}
-            </span>
           </Text>
         </label>
       )}
