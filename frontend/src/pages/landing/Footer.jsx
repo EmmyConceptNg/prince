@@ -20,7 +20,7 @@ export default function Footer({logo=true, }) {
    <Box
      sx={{
        mx: { md: logo ? 10 : 3, xs: 2 },
-       pb: logo ? 10 : 1,
+       pb: logo ? 1 : 1,
        pt: logo && 5,
      }}
    >

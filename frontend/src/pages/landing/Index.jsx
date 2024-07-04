@@ -17,7 +17,7 @@ export default function Home() {
         <title>Prince - Home</title>
       </Helmet>
       <Box>
-        <Box width="100%" bgcolor="" pb={10} pt={2}>
+        <Box width="100%" bgcolor="" pt={2}>
           <Header />
           <Hero />
           <Roadmap />
