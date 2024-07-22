@@ -1,19 +1,10 @@
-import {
-  Box,
-  Checkbox,
-  Grid,
-  Stack,
-} from "@mui/material";
+import { Box, Checkbox, Grid, Stack } from "@mui/material";
 // import { useLocation } from "react-router-dom";
-
-
 
 import { useNavigate } from "react-router-dom";
 
-
-
 import { ToastContainer } from "react-toastify";
-import { notify, userValidation } from "../../utils/Index";
+import { userValidation } from "../../utils/Index";
 import { Formik, Form } from "formik";
 
 import { Icon } from "@iconify/react";
@@ -23,70 +14,62 @@ import Text from "../../components/Text";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import axios from "axios";
-import Footer from "../landing/Footer";
-
-
+import Footer from "../../components/layouts/Footer";
 
 export default function Signup() {
-    const navigate=useNavigate()
+  const navigate = useNavigate();
 
-   const initialValues = {
-    fullName: '',
-    email: '',
-    password: '',
+  const initialValues = {
+    fullName: "",
+    email: "",
+    password: "",
   };
-  
-  
 
   const handleSignup = (values, actions) => {
     actions.setSubmitting(true);
     navigate("/verification/link/email");
-   
   };
 
   const [googelUser, setGoogleUser] = useState([]);
-  
 
-  
-    const signUpWithGoogle = useGoogleLogin({
-      onSuccess: (codeResponse) => setGoogleUser(codeResponse),
-      onError: (error) => console.log("Login Failed:", error),
-    });
+  const signUpWithGoogle = useGoogleLogin({
+    onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+    onError: (error) => console.log("Login Failed:", error),
+  });
 
-    useEffect(() => {
-      if (googelUser && googelUser.access_token) {
-        // Ensure there's an access token
-        axios
-          .get(
-            `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googelUser.access_token}`,
+  useEffect(() => {
+    if (googelUser && googelUser.access_token) {
+      // Ensure there's an access token
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googelUser.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${googelUser.access_token}`,
+            },
+          }
+        )
+        .then((res) => {
+          const actions = {
+            setSubmitting: (isSubmitting) => {
+              /* handle submission state */
+            },
+          };
+          handleSignup(
             {
-              headers: {
-                Authorization: `Bearer ${googelUser.access_token}`,
-              },
-            }
-          )
-          .then((res) => {
-            const actions = {
-              setSubmitting: (isSubmitting) => {
-                /* handle submission state */
-              },
-            };
-            handleSignup(
-              {
-                fullName: res.data.name,
-                email: res.data.email,
-                image: res.data.picture,
-                emailVerified: res.data.verified_email,
-              },
-              actions
-            );
-          })
-          .catch((err) => {
-            console.error("Error fetching Google user info:", err.message);
-          });
-      }
-    }, [googelUser]);
-  
+              fullName: res.data.name,
+              email: res.data.email,
+              image: res.data.picture,
+              emailVerified: res.data.verified_email,
+            },
+            actions
+          );
+        })
+        .catch((err) => {
+          console.error("Error fetching Google user info:", err.message);
+        });
+    }
+  }, [googelUser]);
 
   return (
     <Box height="100vh" ml={{ lg: 20, xs: 0 }}>

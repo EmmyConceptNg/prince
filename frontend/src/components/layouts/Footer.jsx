@@ -1,6 +1,6 @@
 import { Box, Stack } from "@mui/material";
 import { Link } from "react-scroll";
-import Text from "../../components/Text";
+import Text from "../Text";
 
 export default function Footer({logo=true, }) {
   return (

@@ -74,7 +74,7 @@ export default function Input({
   return (
     <FormControl fullWidth sx={{ height }}>
       {label && (
-        <label htmlFor="password" style={{ marginBottom:'10px' }}>
+        <label htmlFor="password" style={{ marginBottom: "10px" }}>
           <Text fw="500" fs="14px" ml={5} color="#fff">
             {label}
           </Text>

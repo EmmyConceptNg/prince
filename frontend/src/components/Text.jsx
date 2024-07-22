@@ -33,7 +33,7 @@ export default function Text({
         background: background,
         WebkitBackgroundClip: background && "text",
         WebkitTextFillColor: background && "transparent",
-        fontFamily: ff,
+        fontFamily: ff ? ff : 'Inter, sans-serif',
       }}
       onClick={handleClick}
     >

@@ -7,7 +7,8 @@ import { ArrowBack } from "@mui/icons-material";
 import { notify, pinValidation } from "../../utils/Index";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
-import Footer from "../landing/Footer";
+import Footer from "../../components/layouts/Footer";
+
 
 
 export default function VerificationEmail() {

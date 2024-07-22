@@ -1,16 +1,12 @@
 import { Box, Stack } from "@mui/material";
 
 import Button from "../../components/Button";
-import { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
-
-// import CheckSuccessIcon from "../../components/svgs/CheckSuccessIcon";
 import Text from "../../components/Text";
-import { useNavigate } from "react-router-dom";
-import Footer from "../landing/Footer";
+import Footer from "../../components/layouts/Footer";
+
 
 export default function VerifiedSuccess() {
-  const navigate = useNavigate
   return (
     <>
       <Box display="flex" justifyContent="center" component="form" mt={10}>

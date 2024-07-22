@@ -11,15 +11,12 @@ import { useEffect, useState } from "react";
 
 
 import { Form, Formik } from "formik";
-
-import { useGoogleLogin } from "@react-oauth/google";
-import { Icon } from "@iconify/react";
-import Footer from "../../landing/Footer";
 import Text from "../../../components/Text";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { passwordEmailValidation } from "../../../utils/Index";
 import { ArrowBack } from "@mui/icons-material";
+import Footer from "../../../components/layouts/Footer";
 
 
 export default function Password() {

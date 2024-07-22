@@ -17,8 +17,9 @@ import { Form, Formik } from "formik";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { Icon } from "@iconify/react";
-import Footer from "../landing/Footer";
+
 import axios from "axios";
+import Footer from "../../components/layouts/Footer";
 
 
 export default function Login() {
