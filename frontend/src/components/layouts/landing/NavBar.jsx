@@ -1,7 +1,8 @@
-import { Link } from "react-scroll";
+
 import { Stack, Box } from "@mui/material";
 import PropTypes from "prop-types";
 import Button from "../../Button";
+import { Link } from "react-router-dom";
 
 
 export default function NavBar({ ffor = "" }) {
@@ -23,7 +24,7 @@ export default function NavBar({ ffor = "" }) {
         >
           {[
             {
-              to: "blog",
+              to: "blogs",
               name: "Blog",
             },
             {

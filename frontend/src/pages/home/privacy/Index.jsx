@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { Helmet } from "react-helmet";
 
 
-import Header from "../../components/layouts/home/Header";
-import Footer from "../../components/layouts/Footer";
+import Header from "../../../components/layouts/home/Header";
+import Footer from "../../../components/layouts/Footer";
 import { Content } from "./Content";
 
 

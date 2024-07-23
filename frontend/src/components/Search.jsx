@@ -1,20 +1,45 @@
 import { FormControl, InputAdornment, OutlinedInput, styled } from "@mui/material";
 import PropTypes from "prop-types";
-
-import SearchIcon from "./svgs/SearchIcon";
-
+import { SearchIcon } from "../../public/svgs/SearchIcon";
 
 
-const InputField = styled(OutlinedInput)(() => ({
+
+// const InputField = styled(OutlinedInput)(() => ({
+//   "& .MuiOutlinedInput-input": {
+//     height: "50px",
+//     padding: "0 16px",
+//     borderRadius: "8px",
+//     backgroundColor: "transparent",
+    
+//   },
+//   "& .MuiOutlinedInput-notchedOutline": {
+//     top: 0,
+//   },
+//   "& .MuiInputLabel-outlined": {
+//     transform: "translate(14px, 18px) scale(1)",
+//   },
+//   "& .MuiInputLabel-shrink": {
+//     transform: "translate(14px, -6px) scale(0.75)",
+//   },
+// }));
+
+
+const InputField = styled(OutlinedInput)(({ sx }) => ({
   "& .MuiOutlinedInput-input": {
-    height: "50px",
+    height: "44px",
     padding: "0 16px",
     borderRadius: "8px",
-    backgroundColor: "transparent",
-    
+
+    outline: "none",
+    backgroundColor: sx ? sx.bgcolor : "transparent",
+    color: "#9AE1BC",
+    "&::placeholder": {
+      color: "#9AE1BC",
+    },
   },
   "& .MuiOutlinedInput-notchedOutline": {
-    top: 0,
+    border: "none",
+    outline: "none",
   },
   "& .MuiInputLabel-outlined": {
     transform: "translate(14px, 18px) scale(1)",
@@ -26,8 +51,6 @@ const InputField = styled(OutlinedInput)(() => ({
 
 
 
-
-
 export default function SearchInput({
   required = true,
   id,
@@ -35,12 +58,13 @@ export default function SearchInput({
   placeholder,
   onChange,
   name,
-  width = "255px",
+  width = "100%",
   type = "text",
-  height = "50px",
+  height = "44px",
   sx,
   rounded = false,
   bgcolor,
+  border,
 }) {
   return (
     <FormControl sx={{ width: width, height }}>
@@ -50,7 +74,8 @@ export default function SearchInput({
         sx={{
           ...sx,
           borderRadius: rounded ? "40px" : "10px",
-          bgcolor: bgcolor ?? "#F6F9FC",
+          bgcolor: bgcolor ?? "transparent",
+          border: border ?? "1px solid #10281B",
         }}
         name={name}
         onChange={onChange}
@@ -82,6 +107,7 @@ SearchInput.propTypes = {
   type: PropTypes.string,
   startAdornment: PropTypes.element,
   details: PropTypes.string,
+  border: PropTypes.string,
   onChange: PropTypes.func,
   sx: PropTypes.object,
   rounded: PropTypes.bool,

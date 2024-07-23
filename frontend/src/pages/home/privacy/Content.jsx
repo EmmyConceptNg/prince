@@ -1,5 +1,5 @@
 import { Box, Divider, List, ListItem } from "@mui/material";
-import Text from "../../components/Text";
+import Text from "../../../components/Text";
 
 export function Content() {
   return (
