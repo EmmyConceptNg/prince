@@ -4,7 +4,7 @@ import { Stack, Box, Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PropTypes from "prop-types";
 import Button from "../../Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -127,11 +127,13 @@ export default function NavBar() {
 }
 
 function Auth(){
+
+  const navigate = useNavigate()
   return (
     <Stack spacing={1} direction= "row" alignItems="center">
       <Button
         sx={{ mt: 1 }}
-        type="submit"
+        onClick={() => navigate('/login')}
         height="40px"
         width="75px"
         variant="outlined"
@@ -141,7 +143,7 @@ function Auth(){
       </Button>
       <Button
         sx={{ mt: 1 }}
-        type="submit"
+        onClick={() => navigate('/signup')}
         height="40px"
         width="88px"
         variant="outlined"
