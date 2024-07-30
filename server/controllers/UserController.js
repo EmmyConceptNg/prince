@@ -8,7 +8,8 @@ export const login = async (req, res) => {
   let signdetails = req.body;
 
   const user = await User.findOne({ email: signdetails.email })
-    .populate("subscriptionPlan");
+    .populate("subscriptionPlan")
+    .populate("documents");
     
   if (!user) {
     return res.status(404).json({ error: "Email not found" });
@@ -50,6 +51,7 @@ export const loginGoogle = async (req, res) => {
     const signdetails = req.body;
     const user = await User.findOne({ email: signdetails.email })
       .populate("subscriptionPlan")
+      .populate("documents")
       .select("-password")
       .lean();
 
@@ -123,6 +125,7 @@ export const register = async (req, res) => {
     const createUser = await User.create(detail);
     const populatedUser = await User.findById(createUser._id)
       .populate("subscriptionPlan")
+      .populate("documents")
       .select("-password");
 
     if (createUser) {
@@ -188,6 +191,7 @@ export const updateUser = async (req, res) => {
   try {
     User.findByIdAndUpdate({ _id: userId }, { $set: req.body }, { new: true })
       .populate("subscriptionPlan")
+      .populate("documents")
       .select("-password")
       .then((user) =>
         res.status(200).json({ user, message: "User Updated Successfully" })
@@ -209,6 +213,7 @@ export const updatePassword = async (req, res) => {
       { new: true }
     )
       .populate("subscriptionPlan")
+      .populate("documents")
       .select("-password")
       .then((user) =>
         res.status(200).json({ user, message: "Password Updated Successfully" })
@@ -243,7 +248,47 @@ export const updateImage = async (req, res) => {
 
 
 
+export const updateDocument = async (req, res) => {
+  try {
+    if (!req.file?.filename) {
+      throw new Error("File path is undefined");
+    }
 
+    const documentPath = `${
+      process.env.SERVER_URL
+    }/images/${req.file.filename.replace(/\\/g, "/")}`;
+    console.log("Document Path: ", documentPath);
+
+    const createDocument = await Documents.create({
+      userId: req.params.userId,
+      name: req.body.name,
+      path: documentPath,
+    });
+
+    if (!createDocument) {
+      return res.status(409).json({ error: "Document creation failed" });
+    }
+
+    // Add the created document to the user's documents array
+    const user = await User.findByIdAndUpdate(
+      req.params.userId,
+      { $push: { documents: createDocument._id } },
+      { new: true }
+    )
+      .populate("subscriptionPlan")
+      .populate("documents")
+      .select("-password");
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    res.status(400).json({ error: error.message });
+  }
+};
 
 
 const html = (user) => {
