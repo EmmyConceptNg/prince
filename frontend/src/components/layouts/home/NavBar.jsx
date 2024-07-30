@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-scroll";
+
 import { Stack, Box, Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PropTypes from "prop-types";
 import Button from "../../Button";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -19,13 +20,13 @@ export default function NavBar() {
   };
 
   const navLinks = [
-    { to: "home", name: "Home" },
-    { to: "how-it-works", name: "How it Works?" },
-    { to: "about-us", name: "About Us" },
-    { to: "features", name: "Features" },
-    { to: "pricing", name: "Pricing" },
-    { to: "resources", name: "Resources" },
-    { to: "contact-us", name: "Contact Us" },
+    { to: "/home", name: "Home" },
+    { to: "/how-it-works", name: "How it Works?" },
+    { to: "/about-us", name: "About Us" },
+    { to: "/features", name: "Features" },
+    { to: "/pricing", name: "Pricing" },
+    { to: "/resources", name: "Resources" },
+    { to: "/contact-us", name: "Contact Us" },
   ];
 
   const drawerContent = (
