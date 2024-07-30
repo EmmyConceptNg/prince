@@ -9,7 +9,6 @@ export const login = async (req, res) => {
 
   const user = await User.findOne({ email: signdetails.email })
     .populate("subscriptionPlan")
-    .populate("documents");
     
   if (!user) {
     return res.status(404).json({ error: "Email not found" });
@@ -51,7 +50,6 @@ export const loginGoogle = async (req, res) => {
     const signdetails = req.body;
     const user = await User.findOne({ email: signdetails.email })
       .populate("subscriptionPlan")
-      .populate("documents")
       .select("-password")
       .lean();
 
@@ -125,7 +123,6 @@ export const register = async (req, res) => {
     const createUser = await User.create(detail);
     const populatedUser = await User.findById(createUser._id)
       .populate("subscriptionPlan")
-      .populate("documents")
       .select("-password");
 
     if (createUser) {

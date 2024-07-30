@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import userRoutes from "./routes/User.js";
+import subscriptionRoutes from "./routes/Subscription.js";
+import planRoutes from "./routes/Plan.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -62,6 +64,8 @@ app.use((req, res, next) => {
 
 // Route handling
 app.use("/api/auth", userRoutes);
+app.use("/api/subscription", subscriptionRoutes);
+app.use("/api/plan", planRoutes);
 
 
 // Error handling middleware

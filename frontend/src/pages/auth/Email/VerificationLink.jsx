@@ -2,17 +2,23 @@ import { Box, Stack } from "@mui/material";
 
 import { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
-
+import axios from '../../../api/axios';
 import Text from "../../../components/Text";
 import Button from "../../../components/Button";
 import Footer from "../../../components/layouts/Footer";
+import { useSelector } from "react-redux";
 
 export default function VerificationLink() {
   const [sendMailBtn, setSendMailBtn] = useState(false);
+    const user = useSelector((state) => state.user.details);
 
+  
   const handleResendMail = () => {
     setSendMailBtn(true);
-    setSendMailBtn(false);
+
+    axios.get(`/api/auth/email/resend/${user.email}`).then(() => {
+      setSendMailBtn(false);
+    });
   };
 
   return (
@@ -29,7 +35,7 @@ export default function VerificationLink() {
               Check your email
             </Text>
             <Text fw="400" fs="16px" color="#fff" sx={{ textAlign: "center" }}>
-              We sent a verification link to olivia@untitledui.com
+              We sent averification link to {user.email}
             </Text>
             <Button
               to="/verification/email"

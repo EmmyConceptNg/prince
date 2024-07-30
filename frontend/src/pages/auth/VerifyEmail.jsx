@@ -8,10 +8,14 @@ import { notify, pinValidation } from "../../utils/Index";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import Footer from "../../components/layouts/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../redux/UserReducer";
+import axios from '../../api/axios'
 
 
 
 export default function VerificationEmail() {
+    const user = useSelector((state) => state.user.details);
   const initialValues = {
     pin1: "",
     pin2: "",
@@ -20,6 +24,7 @@ export default function VerificationEmail() {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   
 
   const handleChange = (event, setFieldValue) => {
@@ -69,13 +74,27 @@ export default function VerificationEmail() {
     }
   };
 
-  const handleSubmit = (values, actions) => {
-    actions.setSubmitting(true);
-    const pin = Object.values(values).join("");
+    const handleSubmit = (values, actions) => {
+      actions.setSubmitting(true);
+      const pin = Object.values(values).join("");
 
-    navigate("/verification/email/verified");
-    
-  };
+      axios
+        .post(`/api/auth/email/verify/${user?.email}`, { pin }) // Ensure you're sending a JSON object.
+        .then((response) => {
+          dispatch(setUser(response.data.user));
+          navigate("/verification/email/verified");
+        })
+        .catch((err) => {
+          notify(
+            err.response?.data?.error || "An unknown error occurred",
+            "error"
+          );
+          actions.setSubmitting(false);
+        })
+        .finally(() => {
+          actions.setSubmitting(false);
+        });
+    };
   return (
     <>
       <Box display="flex" justifyContent="center" mt={10}>
@@ -89,7 +108,7 @@ export default function VerificationEmail() {
               Check your email
             </Text>
             <Text fw="400" fs="16px" color="#fff" sx={{ textAlign: "center" }}>
-              We sent a verification link to olivia@untitledui.com
+              We sent a verification link to {user.email}
             </Text>
             <Formik
               initialValues={initialValues}

@@ -4,20 +4,22 @@ import { Box, Checkbox, Grid, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
-import { userValidation } from "../../utils/Index";
+import { notify, userValidation } from "../../utils/Index";
 import { Formik, Form } from "formik";
-
+import axios from "../../api/axios";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import Text from "../../components/Text";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import axios from "axios";
 import Footer from "../../components/layouts/Footer";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/UserReducer";
 
 export default function Signup() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const initialValues = {
     fullName: "",
@@ -27,7 +29,22 @@ export default function Signup() {
 
   const handleSignup = (values, actions) => {
     actions.setSubmitting(true);
-    navigate("/verification/link/email");
+
+    axios
+      .post("/api/auth/register", values, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response.data.user);
+        dispatch(setUser(response.data.user));
+        navigate("/verification/link/email");
+        // navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+        notify(error?.response?.data?.error, "error");
+      })
+      .finally(() => actions.setSubmitting(false));
   };
 
   const [googelUser, setGoogleUser] = useState([]);

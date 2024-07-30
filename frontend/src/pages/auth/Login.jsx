@@ -2,8 +2,6 @@ import { Box, Checkbox, Grid, Stack } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
-
-
 import { ToastContainer } from "react-toastify";
 
 import { useEffect, useState } from "react";
@@ -18,9 +16,10 @@ import { Form, Formik } from "formik";
 import { useGoogleLogin } from "@react-oauth/google";
 import { Icon } from "@iconify/react";
 
-import axios from "axios";
+import axios from "../../api/axios";
 import Footer from "../../components/layouts/Footer";
-
+import { setUser } from "../../redux/UserReducer";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   // const location = useLocation();
@@ -31,20 +30,44 @@ export default function Login() {
     email: "",
     password: "",
   };
-  
 
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
 
   const handleLogin = (values, actions) => {
     actions.setSubmitting(true);
 
-    navigate("/verification/link/email");
+    axios
+      .post("/api/auth/login", values, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response.data.user);
+        dispatch(setUser(response.data.user));
+
+        if (response.data.user.emailVerified === false) {
+          navigate("/verification/link/email");
+        } else {
+          navigate("/dashboard");
+          //  const lastUrl = localStorage.getItem("lastUrl");
+          // if (lastUrl) {
+          //   navigate(lastUrl);
+          //   localStorage.removeItem("lastUrl");
+          // } else {
+          //   navigate("/dashboard");
+          // }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        notify(error?.response?.data?.error, "error");
+      })
+      .finally(() => actions.setSubmitting(false));
   };
 
   const handleLoginGoogle = (values, actions) => {
     actions.setSubmitting(true);
-navigate("/dashboard");
+    navigate("/dashboard");
   };
 
   const [googleUser, setGoogleUser] = useState([]);
