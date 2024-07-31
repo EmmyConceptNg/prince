@@ -6,7 +6,7 @@ import ProfessionalIcon from "../../../../public/svgs/ProfessionalIcon";
 import EnterpriseIcon from "../../../../public/svgs/EnterpriseIcon";
 import Button from "../../../components/Button";
 
-export default function PricesCard() {
+export default function PricesCard({free=true}) {
   return (
     <Stack spacing={15}>
       <Grid
@@ -68,6 +68,7 @@ export default function PricesCard() {
               width="100%"
               bgcolor="#13131799"
               borderRadius="16px"
+              border="1px solid #10281B"
               pb={5}
               mt={5}
             >
@@ -156,74 +157,81 @@ export default function PricesCard() {
         ))}
       </Grid>
 
-      <Box
-        bgcolor="#051B0F4F"
-        borderRadius="16px"
-        height={{ md: "362px", xs: "450px" }}
-        border="1px solid #10281B"
-        width="100%"
-        display="flex"
-        alignSelf="center"
-        sx={{
-          background: `
+      {free && (
+        <Box
+          bgcolor="#051B0F4F"
+          borderRadius="16px"
+          height={{ md: "362px", xs: "450px" }}
+          border="1px solid #10281B"
+          width="100%"
+          display="flex"
+          alignSelf="center"
+          sx={{
+            background: `
       url('/svgs/TheBg1.svg') top left no-repeat,
       url('/svgs/TheBg2.svg') bottom right no-repeat,
       #051B0F4F
     `,
-        }}
-      >
-        <Stack
-          width="100%"
-          sx={{ flexGrow: 1 }}
-          spacing={2}
-          bgcolor="#051B0F4F"
-          alignItems="center"
-          justifyContent="space-between"
-          py={4}
-          px={{ md: 20, xs: 0 }}
+          }}
         >
-          <Text
-            color="#2DDB81"
-            fw="700"
-            fs="14px"
-            sx={{
-              textAlign: "center",
-            }}
+          <Stack
+            width="100%"
+            sx={{ flexGrow: 1 }}
+            spacing={2}
+            bgcolor="#051B0F4F"
+            alignItems="center"
+            justifyContent="space-between"
+            py={4}
+            px={{ md: 20, xs: 0 }}
           >
-            Subscribe for FREE
-          </Text>
-          <Text
-            color="#fff"
-            ff="KyivTypeSans"
-            fw="700"
-            fs="36px"
-            sx={{
-              mb: 3,
-              textAlign: "center",
-            }}
-          >
-            <span style={{ color: "#2DDB81" }}>14 days</span> of free trial
-          </Text>
-          <Text
-            color="#fff"
-            fw="400"
-            fs="16px"
-            sx={{
-              textAlign: "center",
-            }}
-          >
-            Ready to demystify the world of security certifications and
-            compliance? Join CertRiddle today and start your journey toward
-            security success. With CertRiddle, you're not just getting
-            certified; you're securing the future of your business growth with
-            confidence.
-          </Text>
+            <Text
+              color="#2DDB81"
+              fw="700"
+              fs="14px"
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              Subscribe for FREE
+            </Text>
+            <Text
+              color="#fff"
+              ff="KyivTypeSans"
+              fw="700"
+              fs="36px"
+              sx={{
+                mb: 3,
+                textAlign: "center",
+              }}
+            >
+              <span style={{ color: "#2DDB81" }}>14 days</span> of free trial
+            </Text>
+            <Text
+              color="#fff"
+              fw="400"
+              fs="16px"
+              sx={{
+                textAlign: "center",
+              }}
+            >
+              Ready to demystify the world of security certifications and
+              compliance? Join CertRiddle today and start your journey toward
+              security success. With CertRiddle, you're not just getting
+              certified; you're securing the future of your business growth with
+              confidence.
+            </Text>
 
-          <Button type="button" height="48px" width="130px" variant="contained">
-            <span style={{ color: "#000" }}>Try for free</span>
-          </Button>
-        </Stack>
-      </Box>
+            <Button
+              type="button"
+              height="48px"
+              width="130px"
+              variant="contained"
+            >
+              <span style={{ color: "#000" }}>Try for free</span>
+            </Button>
+          </Stack>
+        </Box>
+      )}
     </Stack>
   );
 }

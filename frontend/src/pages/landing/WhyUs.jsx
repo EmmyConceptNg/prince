@@ -102,7 +102,7 @@ export default function WhyUs() {
       <Grid
         container
         alignItems="center"
-        spacing={{ md: 10, lg:20, xs: 5 }}
+        spacing={{ md: 10, lg: 20, xs: 5 }}
         justifyContent={{ md: "space-between", xs: "center" }}
       >
         <Grid item md={6} lg={6} xs={12} sm={12}>
@@ -179,7 +179,7 @@ export default function WhyUs() {
             component="img"
             src="/svgs/Iphone.svg"
             heigth="471.87px"
-            
+            width="100%"
           />
         </Grid>
       </Grid>
