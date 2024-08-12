@@ -17,7 +17,7 @@ export default function NavBar({ ffor = "" }) {
       >
         <Stack
           justifyContent="flex-start"
-          spacing={{ md:5, xs: 2}}
+          spacing={{ md: 5, xs: 2 }}
           sx={{ ml: "30px" }}
           direction={ffor == "mobile" ? "column" : "row"}
           alignItems={ffor == "mobile" ? "start" : "flex-start"}
@@ -28,16 +28,16 @@ export default function NavBar({ ffor = "" }) {
               name: "Blog",
             },
             {
-              to: "linkedin",
-              image:"/svgs/LinkedIn.svg"
+              to: "https://www.linkedin.com/company/certriddle/?viewAsMember=true",
+              image: "/svgs/LinkedIn.svg",
             },
             {
-              to: "facebook",
-              image:"/svgs/Facebook.svg"
+              to: "https://www.facebook.com/profile.php?id=61559952553785",
+              image: "/svgs/Facebook.svg",
             },
             {
-              to: "twitter",
-              image:"/svgs/Twitter.svg"
+              to: "https://x.com/CertRiddle",
+              image: "/svgs/Twitter.svg",
             },
           ].map((nav, index) => (
             <Link

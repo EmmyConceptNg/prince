@@ -1,6 +1,7 @@
 import { Box, Stack } from "@mui/material";
-import { Link } from "react-scroll";
+
 import Text from "../Text";
+import { Link } from "react-router-dom";
 
 export default function Footer({logo=true, }) {
   return (
@@ -38,15 +39,15 @@ export default function Footer({logo=true, }) {
        >
          {[
            {
-             to: "linkedin",
+             to: "https://www.linkedin.com/company/certriddle/?viewAsMember=true",
              image: "/svgs/LinkedIn.svg",
            },
            {
-             to: "facebook",
+             to: "https://www.facebook.com/profile.php?id=61559952553785",
              image: "/svgs/Facebook.svg",
            },
            {
-             to: "twitter",
+             to: "https://x.com/CertRiddle",
              image: "/svgs/Twitter.svg",
            },
          ].map((nav, index) => (
@@ -89,15 +90,15 @@ export default function Footer({logo=true, }) {
        >
          {[
            {
-             to: "linkedin",
+             to: "/terms",
              name: "Terms",
            },
            {
-             to: "facebook",
+             to: "/privacy",
              name: "Privacy",
            },
            {
-             to: "twitter",
+             to: "/cookies",
              name: "Cookies",
            },
          ].map((nav, index) => (
@@ -121,7 +122,8 @@ export default function Footer({logo=true, }) {
  }
  function Mobile(){
  return (
-   <Box mt={4}
+   <Box
+     mt={4}
      sx={{
        px: { md: 3, xs: 2 },
        py: 1,
@@ -141,15 +143,15 @@ export default function Footer({logo=true, }) {
        >
          {[
            {
-             to: "instagram",
-             image: "/svgs/Instagram-Sm.svg",
+             to: "https://www.linkedin.com/company/certriddle/?viewAsMember=true",
+             image: "/svgs/LinkedIn-Sm.svg",
            },
            {
-             to: "facebook",
+             to: "https://www.facebook.com/profile.php?id=61559952553785",
              image: "/svgs/Facebook-Sm.svg",
            },
            {
-             to: "twitter",
+             to: "https://x.com/CertRiddle",
              image: "/svgs/Twitter-Sm.svg",
            },
          ].map((nav, index) => (
@@ -192,15 +194,15 @@ export default function Footer({logo=true, }) {
        >
          {[
            {
-             to: "linkedin",
+             to: "/terms",
              name: "Terms",
            },
            {
-             to: "facebook",
+             to: "/privacy",
              name: "Privacy",
            },
            {
-             to: "twitter",
+             to: "/cookies",
              name: "Cookies",
            },
          ].map((nav, index) => (

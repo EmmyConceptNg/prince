@@ -24,6 +24,7 @@ export default function NavBar() {
     { to: "/how-it-works", name: "How it Works?" },
     { to: "/about-us", name: "About Us" },
     { to: "/features", name: "Features" },
+    { to: "/blogs", name: "Blogs" },
     { to: "/pricing", name: "Pricing" },
     { to: "/resources", name: "Resources" },
     { to: "/contact-us", name: "Contact Us" },

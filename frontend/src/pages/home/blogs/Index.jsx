@@ -5,8 +5,16 @@ import { Title } from "./Title";
 import { Categories } from "./Categories";
 import { Posts } from "./Posts";
 import Footer from "../../../components/layouts/Footer";
+import axios from "../../../api/axios";
+import { useEffect, useState } from "react";
 
 export function Blogs() {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios.get(`/api/blogs`, {}).then((response) => {
+      setPosts(response.data.blogs);
+    });
+  }, []);
   return (
     <>
       <Header />
@@ -18,7 +26,7 @@ export function Blogs() {
             <Categories />
           </Grid>
           <Grid item md={9} xs={12}>
-            <Posts />
+            <Posts posts={posts} />
           </Grid>
         </Grid>
       </Box>

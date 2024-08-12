@@ -9,6 +9,7 @@ import morgan from "morgan";
 import userRoutes from "./routes/User.js";
 import subscriptionRoutes from "./routes/Subscription.js";
 import planRoutes from "./routes/Plan.js";
+import blogsRoutes from "./routes/Blogs.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -19,6 +20,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "http://localhost:5175",
   "https://prince-i58e.onrender.com",
   // Add more origins as needed
 ];
@@ -66,6 +68,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", userRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/plan", planRoutes);
+app.use("/api/blogs", blogsRoutes);
 
 
 // Error handling middleware
