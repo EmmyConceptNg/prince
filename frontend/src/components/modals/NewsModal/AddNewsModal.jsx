@@ -7,10 +7,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import Text from "../Text";
-import Button from "../Button";
+import Text from "../../Text";
+import Button from "../../Button";
 import PropTypes from "prop-types";
-import axios from "../../api/axios";
+import axios from "../../../api/axios";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import "ckeditor5/ckeditor5.css";
 import { ToastContainer } from "react-toastify";
@@ -72,7 +72,7 @@ import {
   Undo,
 } from "ckeditor5";
 import { useSelector } from "react-redux";
-import { notify } from "../../utils/Index";
+import { notify } from "../../../utils/Index";
 
 const style = {
   position: "absolute",
@@ -88,7 +88,7 @@ const style = {
   p: 4,
 };
 
-export default function NewsModal({ open, setOpen, setPosts }) {
+export default function AddNewsModal({ open, setOpen, setPosts }) {
   const editorContainerRef = useRef(null);
   const editorToolbarRef = useRef(null);
   const editorRef = useRef(null);
@@ -100,7 +100,7 @@ export default function NewsModal({ open, setOpen, setPosts }) {
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
 
-  const categories = ["Politics", "Technology", "Health", "Entertainment"];
+  const categories = ["Design", "Product", "Software Engineering", "Customer Success", "Leadership", "Management"];
 
   useEffect(() => {
     setIsLayoutReady(true);
@@ -440,7 +440,7 @@ export default function NewsModal({ open, setOpen, setPosts }) {
   );
 }
 
-NewsModal.propTypes = {
+AddNewsModal.propTypes = {
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   setPosts: PropTypes.func,

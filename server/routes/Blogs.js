@@ -1,5 +1,10 @@
 import express from "express";
-import { getBlogs, getBlog, createBlogs } from "../controllers/BlogsController.js";
+import {
+  getBlogs,
+  getBlog,
+  createBlogs,
+  updateBlog,
+} from "../controllers/BlogsController.js";
 import { fileURLToPath } from "url";
 import path from 'path';
 import multer from "multer";
@@ -35,6 +40,7 @@ const upload = multer({ storage: storage });
 router.get("/", getBlogs);
 router.get("/:id", getBlog);
 router.post("/create", upload.single("image"), createBlogs);
+router.put("/:id/update", upload.single("image"), updateBlog);
 
 // Add more routes as needed
 

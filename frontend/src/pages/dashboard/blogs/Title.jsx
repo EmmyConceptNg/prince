@@ -2,9 +2,11 @@ import { useState } from "react";
 import Button from "../../../components/Button";
 import Text from "../../../components/Text";
 import { Box } from "@mui/material";
-import NewsModal from "../../../components/modals/NewsModal";
+import AddNewsModal from "../../../components/modals/NewsModal/AddNewsModal";
+
 export function Title({ setPosts }) {
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Box display="flex" justifyContent="flex-end" mb={4} gap={2}>
@@ -26,7 +28,9 @@ export function Title({ setPosts }) {
         </Button>
       </Box>
 
-      {open && <NewsModal open={open} setOpen={setOpen} setPosts={setPosts} />}
+      {open && (
+        <AddNewsModal open={open} setOpen={setOpen} setPosts={setPosts} />
+      )}
     </>
   );
 }

@@ -42,3 +42,30 @@ export const createBlogs = async (req, res) => {
     res.status(500).json({ message: "Error creating blog", error }); // Handle any errors
   }
 };
+// Update a blog
+export const updateBlog = async (req, res) => {
+  try {
+    const { title, category, content, userId } = req.body;
+    const image =
+      process.env.SERVER_URL +
+      "/images/" +
+      req.file.filename.replace(/\\/g, "/");
+
+
+      await Blog.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          title,
+          category,
+          content,
+          image,
+          author: userId,
+        },
+        { new: true }
+      );
+    const blogs = await Blog.find().sort({ createdAt: -1 }).populate("author");
+    res.status(201).json({ blogs }); // Respond with the newly created blog
+  } catch (error) {
+    res.status(500).json({ message: "Error updating blog", error }); // Handle any errors
+  }
+};
