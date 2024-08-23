@@ -6,13 +6,16 @@ import HowItWorks from "../pages/home/howItWorks/Index";
 import Post from "../pages/home/blogs/Post";
 import Terms from "../pages/home/terms/Index";
 import Cookies from "../pages/home/cookies/Index";
+import { Updates } from "../pages/home/update/Index";
 
 export const HomeRoutes = () => {
   return [
     { path: "/", element: <Home /> },
+    { path: "/landing", element: <Home /> },
     { path: "/privacy", element: <Privacy /> },
     { path: "/cookies", element: <Cookies /> },
     { path: "/terms", element: <Terms /> },
+    { path: "/updates", element: <Updates /> },
     { path: "/blogs", element: <Blogs /> },
     { path: "/blogs/:id", element: <Post /> },
     { path: "/pricing", element: <Pricing /> },

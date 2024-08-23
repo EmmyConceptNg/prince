@@ -11,6 +11,7 @@ import subscriptionRoutes from "./routes/Subscription.js";
 import planRoutes from "./routes/Plan.js";
 import blogsRoutes from "./routes/Blogs.js";
 import waitlistRoutes from "./routes/Waitlist.js";
+import updatesController from "./routes/Update.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -71,6 +72,7 @@ app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/plan", planRoutes);
 app.use("/api/blogs", blogsRoutes);
 app.use("/api/waitlist", waitlistRoutes);
+app.use("/api/updates", updatesController);
 
 
 // Error handling middleware

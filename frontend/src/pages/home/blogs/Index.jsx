@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import Header from "../../../components/layouts/home/Header";
+import Header from "../../../components/layouts/landing/Header";
 
 import { Title } from "./Title";
 import { Categories } from "./Categories";

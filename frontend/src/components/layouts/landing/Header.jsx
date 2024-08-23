@@ -39,7 +39,7 @@ export default function Header(props) {
       
 
         <ToolbarStyled style={{ padding: 0 }}>
-          <Box>
+          <Box onClick={() => navigate('/')}>
             <Box
               component="img"
               src="/logo/Logo.svg"

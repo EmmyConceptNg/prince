@@ -39,8 +39,9 @@ export default function Newsletter() {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <Stack
+        id="waitlist"
         sx={{
           border: "1px solid #10281B",
           borderRadius: "16px",

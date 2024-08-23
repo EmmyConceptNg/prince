@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
+import { Link } from "react-scroll";
 
 export default function Hero() {
   return (
     <Box
       sx={{
-        
         background: {
           md: "url('/svgs/Hero-Bg.svg') top center / contain no-repeat",
           xs: "url('/svgs/Hero-BgSm.svg') bottom center / cover no-repeat",
@@ -15,7 +15,6 @@ export default function Hero() {
         flexDirection: "column",
         alignItems: { md: "center", xs: "center" },
       }}
-
       pb={40}
     >
       <Text
@@ -60,15 +59,17 @@ export default function Hero() {
         in a mystery inside an enigma.
       </Text>
       <Box display="flex" justifyContent="center">
-        <Button
-          sx={{ mt: 5 }}
-          type="submit"
-          height="56px"
-          width="280px"
-          variant="contained"
-        >
-          Join the waitlist
-        </Button>
+        <Link to="waitlist" smooth={true} duration={500}>
+          <Button
+            sx={{ mt: 5 }}
+            type="submit"
+            height="56px"
+            width="280px"
+            variant="contained"
+          >
+            Join the waitlist
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

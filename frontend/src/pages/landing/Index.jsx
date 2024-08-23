@@ -9,8 +9,23 @@ import WhyUs from "./WhyUs";
 import Newsletter from "./Newsletter";
 import Community from "./Community";
 import Footer from "../../components/layouts/Footer";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { scroller } from "react-scroll";
 
 export default function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.has("waitlist")) {
+      scroller.scrollTo("waitlist", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+      });
+    }
+  }, [location]);
   return (
     <Box>
       <Helmet>
