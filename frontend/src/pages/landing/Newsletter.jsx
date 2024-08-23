@@ -15,6 +15,7 @@ export default function Newsletter() {
   const initialValues = {
     email: "",
   };
+ 
   const handleNewsLetter = (values, actions) => {
     actions.setSubmitting(true);
 
@@ -25,6 +26,7 @@ export default function Newsletter() {
       .then((response) => {
         console.log(response.data.waitlist);
         notify(response?.data?.success, "success");
+        actions.resetForm(); // Reset the form fields to initial values
       })
       .catch((error) => {
         console.log(error);
