@@ -64,9 +64,11 @@ export default function WhyUs() {
             fs={{ md: "15px", lg: "15px", sm: "10px", xs: "10px" }}
           >
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
-              Proactive Compliance:
+              Save Time & Resources:
             </span>{" "}
-            Stay ahead with real-time updates and alerts, ensuring you're always compliant and secure.
+            No more wading through endless regulations and guidelines.
+            CertRiddle streamlines the process, saving you precious time and
+            resources.
           </Text>
           <Text
             sx={{ mt: 3 }}
@@ -75,10 +77,11 @@ export default function WhyUs() {
             fs={{ md: "15px", lg: "15px", sm: "10px", xs: "10px" }}
           >
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
-              Effortless Integration::
+              Tailored to Your Needs:
             </span>{" "}
-            Seamlessly connect CertRiddle with your existing tools for a smooth, hassle-free experience.
-
+            Our platform recognizes that no two startups are the same. Get
+            recommendations and guidance that's relevant to your specific
+            business model and industry.
           </Text>
           <Text
             sx={{ mt: 3 }}
@@ -87,9 +90,10 @@ export default function WhyUs() {
             fs={{ md: "15px", lg: "15px", sm: "10px", xs: "10px" }}
           >
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
-              Scalable Solutions:
+              Expert Support:
             </span>{" "}
-           Whether you're starting out or scaling up, CertRiddle grows with your business.
+            With CertRiddle, you're never alone. Our platform offers expert
+            advice and a community of peers to support you at every turn.
           </Text>
         </Grid>
       </Grid>
@@ -140,7 +144,8 @@ export default function WhyUs() {
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
               Proactive Compliance:
             </span>{" "}
-            Stay ahead with real-time updates and alerts, ensuring you're always compliant and secure.
+            Stay ahead with real-time updates and alerts, ensuring you're always
+            compliant and secure.
           </Text>
           <Text
             sx={{ mt: 3 }}
@@ -149,10 +154,10 @@ export default function WhyUs() {
             fs={{ md: "15px", lg: "15px", sm: "10px", xs: "10px" }}
           >
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
-              Effortless Integration::
+              Effortless Integration:
             </span>{" "}
-            Seamlessly connect CertRiddle with your existing tools for a smooth, hassle-free experience.
-
+            Seamlessly connect CertRiddle with your existing tools for a smooth,
+            hassle-free experience.
           </Text>
           <Text
             sx={{ mt: 3 }}
@@ -163,7 +168,8 @@ export default function WhyUs() {
             <span style={{ color: "#2DDB81", fontWeight: "700" }}>
               Scalable Solutions:
             </span>{" "}
-           Whether you're starting out or scaling up, CertRiddle grows with your business.
+            Whether you're starting out or scaling up, CertRiddle grows with
+            your business.
           </Text>
         </Grid>
         <Grid item md={6} lg={6} xs={12} sm={12}>
