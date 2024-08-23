@@ -10,6 +10,7 @@ import userRoutes from "./routes/User.js";
 import subscriptionRoutes from "./routes/Subscription.js";
 import planRoutes from "./routes/Plan.js";
 import blogsRoutes from "./routes/Blogs.js";
+import waitlistRoutes from "./routes/Waitlist.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -69,6 +70,7 @@ app.use("/api/auth", userRoutes);
 app.use("/api/subscription", subscriptionRoutes);
 app.use("/api/plan", planRoutes);
 app.use("/api/blogs", blogsRoutes);
+app.use("/api/waitlist", waitlistRoutes);
 
 
 // Error handling middleware

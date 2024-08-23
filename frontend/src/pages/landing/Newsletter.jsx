@@ -1,28 +1,51 @@
 import { Box, Stack } from "@mui/material";
 import Text from "../../components/Text";
 import { Form, Formik } from "formik";
-import { newsletterValidation } from "../../utils/Index";
+import { newsletterValidation, notify } from "../../utils/Index";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/UserReducer";
+import { ToastContainer } from "react-toastify";
 
 export default function Newsletter() {
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
   };
-  const handleNewsLetter = (values, actions) => {};
+  const handleNewsLetter = (values, actions) => {
+    actions.setSubmitting(true);
+
+    axios
+      .post("/api/waitlist", values, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response.data.waitlist);
+        notify(response?.data?.success, "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        notify(error?.response?.data?.error?.message, "error");
+      })
+      .finally(() => actions.setSubmitting(false));
+  };
 
   const navigate = useNavigate();
 
   return (
     <>
+    <ToastContainer />
       <Stack
         sx={{
           border: "1px solid #10281B",
           borderRadius: "16px",
           mx: { xl: "100px", lg: 10, xs: 2 },
           py: 10,
-          bgcolor: "#051B0F4F", zIndex : '999px',
+          bgcolor: "#051B0F4F",
+          zIndex: "999px",
         }}
         mt={10}
         justifyContent="space-between"
