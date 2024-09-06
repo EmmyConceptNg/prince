@@ -23,10 +23,10 @@ export default function NavBar({ ffor = "" }) {
           alignItems={ffor == "mobile" ? "start" : "flex-start"}
         >
           {[
-            {
-              to: "/updates",
-              name: "Blog",
-            },
+            // {
+            //   to: "/updates",
+            //   name: "Blog",
+            // },
             {
               to: "https://www.linkedin.com/company/certriddle/?viewAsMember=true",
               image: "/svgs/LinkedIn.svg",

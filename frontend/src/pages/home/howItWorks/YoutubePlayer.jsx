@@ -9,8 +9,8 @@ export default function YoutubePlayer() {
           md: "url('/svgs/Roadmap-Bg.png') #000 top center / cover no-repeat",
           xs: "url('/svgs/Roadmap-Bg.png') #000 bottom center / cover no-repeat",
         },
-        marginTop:'-250px',
-        marginBottom:'80px',
+        marginTop: "-250px",
+        marginBottom: "80px",
         heigth: "100%",
         display: "flex",
         flexDirection: "column",
@@ -37,7 +37,7 @@ export default function YoutubePlayer() {
               textAlign: { md: "center", xs: "center" },
             }}
           >
-            Welcome to CertRiddle! Making
+            Welcome to CertRiddle! where we {' '}
           </Text>
           <Text
             color="#fff"
@@ -50,9 +50,9 @@ export default function YoutubePlayer() {
             }}
           >
             <span style={{ color: "#2DDB81" }}>
-              Security Certifications & Compliance
-            </span>{" "}
-            Less of a Puzzle!
+              simplify the complexities of security certifications and
+              compliance.
+            </span>
           </Text>
           <Text
             color="#fff"
@@ -63,12 +63,13 @@ export default function YoutubePlayer() {
               textAlign: { md: "center", xs: "center" },
             }}
           >
-            In today's digital world, securing your startup or SMB against
-            online threats while securing business opportunities has never been
-            more critical. But let's face it, navigating the complex labyrinth
-            of security certifications can feel like trying to solve a riddle
-            wrapped in a mystery inside an enigma. That's where CertRiddle comes
-            in.
+            Imagine a future where your startup is not just protected from
+            online threats but also thrives by unlocking new business
+            opportunities with ease. At CertRiddle, we turn the daunting task of
+            navigating security certifications into a seamless journey. Say
+            goodbye to the puzzle, and let us guide you confidently through the
+            labyrinth of compliance, so you can focus on what truly
+            matters—growing your business.
           </Text>
         </Box>
         <Box display="flex" justifyContent="center">

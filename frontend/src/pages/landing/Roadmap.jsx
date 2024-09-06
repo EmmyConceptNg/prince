@@ -36,11 +36,11 @@ export default function Roadmap() {
         >
           Welcome to CertRiddle!
           <p style={{ marginTop: "0px" }}>
-            Making{" "}
+            where we{" "}
             <span style={{ color: "#2DDB81" }}>
-              Security Certifications & Compliance{" "}
+              simplify the complexities of security certifications and
+              compliance.
             </span>
-            Less of a Puzzle!
           </p>
           <Box disply="flex" pr={{ xs: 0, md: "300px", lg: '"550px"' }}>
             <p
@@ -50,12 +50,13 @@ export default function Roadmap() {
                 fontFamily: "Inter",
               }}
             >
-              In today's digital world, securing your startup or SMB against
-              online threats while securing business opportunities has never
-              been more critical. But let's face it, navigating the complex
-              labyrinth of security certifications can feel like trying to solve
-              a riddle wrapped in a mystery inside an enigma. That's where
-              CertRiddle comes in.
+              Imagine a future where your startup is not just protected from
+              online threats but also thrives by unlocking new business
+              opportunities with ease. At CertRiddle, we turn the daunting task
+              of navigating security certifications into a seamless journey. Say
+              goodbye to the puzzle, and let us guide you confidently through
+              the labyrinth of compliance, so you can focus on what truly
+              matters—growing your business.
             </p>
           </Box>
         </Text>
