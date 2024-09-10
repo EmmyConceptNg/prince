@@ -22,20 +22,22 @@ export function Content() {
         {/* Ent title */}
 
         {/* content */}
+
         <Text
           color="#fff"
-          fw={{ md: "400", xs: "400" }}
-          fs={{ md: "18px", lg: "18px", sm: "16px", xs: "16px" }}
+          fw="700"
+          fs={{ md: "24px", lg: "24px", sm: "24px", xs: "24px" }}
           sx={{
             textAlign: "left",
+            mb: 3,
           }}
         >
           Introduction
         </Text>
         <Text
-          color="#fff"
-          fw={{ md: "600", xs: "600" }}
-          fs={{ md: "18px", lg: "18px", sm: "16px", xs: "16px" }}
+          color="#ffffffde"
+          fw={{ md: "400", xs: "400" }}
+          fs={{ md: "16px", lg: "16px", sm: "16px", xs: "16px" }}
           sx={{
             textAlign: "left",
           }}
@@ -329,9 +331,9 @@ export function Content() {
         {/* end sub title */}
         {/* content */}
         <Text
-          color="#fff"
+          color="#ffffffde"
           fw={{ md: "400", xs: "400" }}
-          fs={{ md: "18px", lg: "18px", sm: "16px", xs: "16px" }}
+          fs={{ md: "16px", lg: "16px", sm: "16px", xs: "16px" }}
           sx={{
             textAlign: "left",
           }}

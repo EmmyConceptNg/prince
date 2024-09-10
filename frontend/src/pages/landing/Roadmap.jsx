@@ -7,6 +7,7 @@ export default function Roadmap() {
     <Box
       sx={{
         background: {
+          lg: "url('/svgs/Roadmap-Bg.png') #000 center center / cover no-repeat",
           md: "url('/svgs/Roadmap-Bg.png') #000 top center / cover no-repeat",
           xs: "url('/svgs/Roadmap-Bg.png') #000 bottom center / cover no-repeat",
         },
@@ -45,8 +46,8 @@ export default function Roadmap() {
           <Box disply="flex" pr={{ xs: 0, md: "300px", lg: '"550px"' }}>
             <p
               style={{
-                fontSize: "18px",
-                fontWeight: "500",
+                fontSize: "15px",
+                fontWeight: "400",
                 fontFamily: "Inter",
               }}
             >
@@ -65,7 +66,7 @@ export default function Roadmap() {
           color="#fff"
           ff="KyivTypeSans"
           fw="700"
-          fs={{ md: "32px", lg: "32px", sm: "30px", xs: "20px" }}
+          fs={{ md: "44px", lg: "44px", sm: "30px", xs: "20px" }}
           sx={{
             mt: 20,
             textAlign: {

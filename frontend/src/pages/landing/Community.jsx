@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
+import { Link } from "react-scroll";
 
 export default function Community() {
   return (
@@ -11,20 +12,20 @@ export default function Community() {
           xs: "url('/svgs/Community-BgSm.svg') top center / cover no-repeat",
         },
 
-        height: {md:"100%", xs:"50%"},
+        height: { md: "100%", xs: "50%" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         pt: 40,
-        mt:20 
+        mt: 20,
       }}
     >
       <Text
         color="#2DDB81"
         ff="KyivTypeSans"
         fw="700"
-        fs={{ md: "14px", lg: "14px", sm: "10px", xs: "10px" }}
+        fs={{ md: "16px", lg: "16px", sm: "10px", xs: "10px" }}
         sx={{
           mb: "0px",
           textAlign: "center",
@@ -67,15 +68,17 @@ export default function Community() {
         future of your business growth with confidence.
       </Text>
 
-      <Button
-        sx={{ mt: 5 }}
-        type="submit"
-        height="48px"
-        width="220px"
-        variant="contained"
-      >
-        Join Community
-      </Button>
+      <Link to="waitlist" smooth={true} duration={500}>
+        <Button
+          sx={{ mt: 5 }}
+          type="submit"
+          height="48px"
+          width="220px"
+          variant="contained"
+        >
+          Join the waitlist
+        </Button>
+      </Link>
     </Box>
   );
 }
