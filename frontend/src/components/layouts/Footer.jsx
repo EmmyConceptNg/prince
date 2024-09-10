@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 
 import Text from "../Text";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Footer({logo=true, }) {
   return (
@@ -17,6 +17,8 @@ export default function Footer({logo=true, }) {
 }
 
  function Desktop({logo}){
+
+  const navigate = useNavigate()
  return (
    <Box
      sx={{
@@ -26,7 +28,7 @@ export default function Footer({logo=true, }) {
      }}
    >
      {logo && (
-       <Box display="flex" justifyContent={{ md: "flex-start", xs: "center" }}>
+       <Box display="flex" justifyContent={{ md: "flex-start", xs: "center" }} onClick={() => (navigate(''))}>
          <Box component="img" src="/logo/Logo.svg" sx={{ height: "72px" }} />
        </Box>
      )}
@@ -121,6 +123,7 @@ export default function Footer({logo=true, }) {
  );
  }
  function Mobile(){
+  const navigate = useNavigate();
  return (
    <Box
      mt={4}
