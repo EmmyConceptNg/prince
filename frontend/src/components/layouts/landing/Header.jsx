@@ -40,10 +40,10 @@ export default function Header(props) {
 
         <ToolbarStyled style={{ padding: 0 }}>
           <Box onClick={() => navigate('/')}>
-            <Box
+            <Box 
               component="img"
               src="/logo/Logo.svg"
-              sx={{ height: "72px" }}
+              sx={{ height: "72px", cursor : 'pointer'  }}
             ></Box>
           </Box>
 

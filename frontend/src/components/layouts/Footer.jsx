@@ -28,8 +28,16 @@ export default function Footer({logo=true, }) {
      }}
    >
      {logo && (
-       <Box display="flex" justifyContent={{ md: "flex-start", xs: "center" }} onClick={() => navigate('/')}>
-         <Box component="img" src="/logo/Logo.svg" sx={{ height: "72px" }} />
+       <Box
+         display="flex"
+         justifyContent={{ md: "flex-start", xs: "center" }}
+         onClick={() => navigate("/")}
+       >
+         <Box
+           component="img"
+           src="/logo/Logo.svg"
+           sx={{ height: "72px", cursor: "pointer" }}
+         />
        </Box>
      )}
      <Box mt={3}>
