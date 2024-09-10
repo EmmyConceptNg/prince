@@ -178,7 +178,7 @@ export function Content() {
           Managing Your Cookies
         </Text>
         <Text
-          color="#fff"
+          color="#ffffffde"
           fw="400"
           fs={{ md: "20px", lg: "20px", sm: "20px", xs: "20px" }}
           sx={{
