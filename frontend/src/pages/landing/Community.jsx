@@ -25,7 +25,7 @@ export default function Community() {
         color="#2DDB81"
         ff="KyivTypeSans"
         fw="700"
-        fs={{ md: "16px", lg: "16px", sm: "10px", xs: "10px" }}
+        fs={{ md: "18px", lg: "18px", sm: "14px", xs: "14px" }}
         sx={{
           mb: "0px",
           textAlign: "center",
