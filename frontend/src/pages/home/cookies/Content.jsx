@@ -219,9 +219,9 @@ export function Content() {
         </List>
 
         <Text
-          color="#fff"
+          color="#ffffffde"
           fw="400"
-          fs={{ md: "20px", lg: "20px", sm: "20px", xs: "20px" }}
+          fs={{ md: "16px", lg: "16px", sm: "16px", xs: "16px" }}
           sx={{
             textAlign: "left",
             mb: 3,
@@ -324,9 +324,9 @@ export function Content() {
         {/* end sub title */}
         {/* content */}
         <Text
-          color="#fff"
+          color="#ffffffde"
           fw={{ md: "400", xs: "400" }}
-          fs={{ md: "18px", lg: "18px", sm: "16px", xs: "16px" }}
+          fs={{ md: "16px", lg: "16px", sm: "16px", xs: "16px" }}
           sx={{
             textAlign: "left",
           }}
