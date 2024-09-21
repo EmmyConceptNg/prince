@@ -36,26 +36,24 @@ export default function Header(props) {
   return (
     <>
       <AppBarStyled position="sticky" color="default">
-      
-
         <ToolbarStyled style={{ padding: 0 }}>
-          <Box onClick={() => navigate('/')}>
-            <Box 
+          <Box onClick={() => navigate("/")}>
+            <Box
               component="img"
               src="/logo/Logo.svg"
-              sx={{ height: "72px", cursor : 'pointer'  }}
+              sx={{ height: "72px", cursor: "pointer" }}
             ></Box>
           </Box>
 
           <Box
             width="100%"
             sx={{
-              display: 'flex',  alignItems: "center"
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <NavBar />
           </Box>
-        
         </ToolbarStyled>
       </AppBarStyled>
     </>
