@@ -3,13 +3,15 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import { sendMail } from "./SendMail.js";
 import Plan from "../models/Plan.js";
+import Waitlist from "../models/Waitlist.js";
 
 export const login = async (req, res) => {
   let signdetails = req.body;
 
-  const user = await User.findOne({ email: signdetails.email })
-    .populate("subscriptionPlan")
-    
+  const user = await User.findOne({ email: signdetails.email }).populate(
+    "subscriptionPlan"
+  );
+
   if (!user) {
     return res.status(404).json({ error: "Email not found" });
   }
@@ -243,8 +245,6 @@ export const updateImage = async (req, res) => {
   }
 };
 
-
-
 export const updateDocument = async (req, res) => {
   try {
     if (!req.file?.filename) {
@@ -286,7 +286,6 @@ export const updateDocument = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
 
 const html = (user) => {
   return ` <center>
@@ -387,4 +386,10 @@ const html = (user) => {
      </table>
  </center>
 `;
+};
+
+export const getEmails = (req, res, next) => {
+  Waitlist.find()
+    .then((users) => res.status(200).json({ users }))
+    .catch((error) => res.status(500).json({ error: error }));
 };

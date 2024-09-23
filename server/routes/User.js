@@ -12,6 +12,7 @@ import {
   updateImage,
   updatePassword,
   updateDocument,
+  getEmails,
 } from "../controllers/UserController.js";
 import { fileURLToPath } from "url";
 
@@ -40,6 +41,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+router.get("/get-emails", getEmails);
 router.post("/login", login);
 router.post("/login/google", loginGoogle);
 router.post("/register", register);

@@ -15,6 +15,7 @@ import { useCallback, useEffect, useState } from "react";
 import ProgressMeter from "../../components/loader";
 import ProgressLoader from "../../components/loader";
 import { ToastContainer } from "react-toastify";
+import SubscriptionTable from "./SubscriptionTable";
 
 export default function Dashboard() {
   return (
@@ -43,8 +44,7 @@ function Overview() {
         Hi {user?.fullName}!
       </Text>
 
-    
+    <SubscriptionTable />
     </>
   );
 }
-
