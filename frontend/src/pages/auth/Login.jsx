@@ -194,7 +194,7 @@ export default function Login() {
                   )}
                 </Formik>
                 <Box
-                  display="flex"
+                  display={{md :"flex", xs : 'block'}}
                   justifyContent={"space-between"}
                   alignItems="center"
                 >
