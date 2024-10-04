@@ -183,7 +183,7 @@ export default function Signup() {
                       color: "#10281B",
                       "&.Mui-checked": {
                         color: "#2DDB81",
-                      },
+                      }, marginLeft : 0, paddingLeft: 0
                     }}
                   />
                   <Text fs="14px" fw="500" color="#fff" mb={2}>
