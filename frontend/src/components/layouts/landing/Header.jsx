@@ -33,6 +33,7 @@ const ToolbarStyled = styled(Toolbar)(({ theme }) => ({
 export default function Header(props) {
   const [isSidebar, setIsSidebar] = React.useState(false);
   const navigate = useNavigate();
+  
   return (
     <>
       <AppBarStyled position="sticky" color="default">

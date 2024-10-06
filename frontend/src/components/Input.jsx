@@ -1,4 +1,5 @@
 import {
+  Box,
   FormControl,
   IconButton,
   InputAdornment,
@@ -15,8 +16,6 @@ const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
   "& .MuiOutlinedInput-input": {
     height: height,
     padding: "0 14px",
-    borderRadius: "8px",
-    border: "1px solid #10281B",
     outline: "none",
     backgroundColor: sx ? sx.bgcolor : "#fff",
     color: isPin ? "#2DDB81" : "#667085",
@@ -74,43 +73,50 @@ export default function Input({
   return (
     <FormControl fullWidth sx={{ height }}>
       {label && (
-        <label htmlFor="password" style={{ marginBottom: "10px" }}>
+        <label htmlFor={id} style={{ marginBottom: "10px" }}>
           <Text fw="500" fs="14px" ml={5} color="#fff">
             {label}
           </Text>
         </label>
       )}
-      <InputField
-        {...field}
-        onInput={onInput}
-        readOnly={readOnly}
-        inputProp={inputProp}
-        height={height}
-        type={inputType}
-        fullWidth
-        sx={{ width, ...sx }}
-        name={name}
-        required={required}
-        id={id}
-        isPin={isPin}
-        defaultValue={defaultValue}
-        endAdornment={
-          isPasswordField ? (
-            <InputAdornment position="end">
-              <IconButton
-                sx={{ color: "#9AE1BC" }}
-                aria-label={`toggle ${name} visibility`}
-                onClick={() => handleClickShowPassword(name)}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword[name] ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          ) : null
-        }
-        placeholder={placeholder}
-      />
+      <Box
+        sx={{
+          border: "1px solid #10281B",
+          borderRadius: "8px",
+        }}
+      >
+        <InputField
+          {...field}
+          onInput={onInput}
+          readOnly={readOnly}
+          inputProp={inputProp}
+          height={height}
+          type={inputType}
+          fullWidth
+          sx={{ width, ...sx }}
+          name={name}
+          required={required}
+          id={id}
+          isPin={isPin}
+          defaultValue={defaultValue}
+          endAdornment={
+            isPasswordField ? (
+              <InputAdornment position="end">
+                <IconButton
+                  sx={{ color: "#9AE1BC", padding: "5px" }} // Adjust padding to fit inside the input
+                  aria-label={`toggle ${name} visibility`}
+                  onClick={() => handleClickShowPassword(name)}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword[name] ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ) : null
+          }
+          placeholder={placeholder}
+        />
+      </Box>
       {meta.touched && meta.error ? (
         <Text fw="400" color="red" fs="0.75rem">
           {meta.error}

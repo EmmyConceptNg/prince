@@ -11,9 +11,14 @@ import subscriptionRoutes from "./routes/Subscription.js";
 import planRoutes from "./routes/Plan.js";
 import blogsRoutes from "./routes/Blogs.js";
 import waitlistRoutes from "./routes/Waitlist.js";
+import sessionRoutes from "./routes/Sessions.js";
 import updatesController from "./routes/Update.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import session from "express-session";
+import MongoStore from "connect-mongo";
+
+import cookieParser from "cookie-parser";
 
 // CONFIGURATION
 
@@ -28,6 +33,11 @@ const allowedOrigins = [
   "https://prince-i58e.onrender.com",
   // Add more origins as needed
 ];
+
+
+// Middleware for parsing cookies
+app.use(cookieParser());
+
 
 // CORS setup
 app.use(
@@ -62,6 +72,19 @@ dotenv.config({ path: envFile });
 // Serve static files from the "public/images" directory
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
+
+
+
+// Set up sessions 
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'prince-session',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }  // Set secure to true when using HTTPS
+}));
+
+
+
 // Log incoming requests
 app.use((req, res, next) => {
   console.log(`Request from origin: ${req.headers.origin}`);
@@ -75,6 +98,23 @@ app.use("/api/plan", planRoutes);
 app.use("/api/blogs", blogsRoutes);
 app.use("/api/waitlist", waitlistRoutes);
 app.use("/api/updates", updatesController);
+app.use("/api/sessions", sessionRoutes);
+
+
+
+// Middleware to validate session and browser ID
+app.use((req, res, next) => {
+  const { token: sessionToken, browserId: sessionBrowserId } = req.session;
+  const { token: clientToken } = req.query;
+  const clientBrowserId = req.cookies.browserId; // Browser ID from cookies
+
+  // Check if both session token and browser ID match
+  if (!clientToken || clientToken !== sessionToken || clientBrowserId !== sessionBrowserId) {
+    return res.status(404).send('Session invalid or reused in another browser');
+  }
+
+  next();
+});
 
 
 // Error handling middleware
