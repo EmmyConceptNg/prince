@@ -98,7 +98,7 @@ export default function Login() {
               /* handle submission state */
             },
           };
-          handleLoginGoogle(
+          handleLogin(
             {
               email: res.data.email,
               emailVerified: res.data.verified_email,
