@@ -37,8 +37,10 @@ export default function Signup() {
       .then((response) => {
         console.log(response.data.user);
         dispatch(setUser(response.data.user));
-        navigate("/verification/link/email");
-        // navigate("/dashboard");
+        if (!response.data.user.emailVerified){
+           navigate("/verification/link/email");
+        }
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);
