@@ -33,7 +33,7 @@ function App() {
    };
 
    fetchSession();
- }, [navigate, urlTokenSet]);
+ }, [urlTokenSet]);
 
   return (
     <>
