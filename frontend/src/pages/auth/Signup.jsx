@@ -39,8 +39,9 @@ export default function Signup() {
         dispatch(setUser(response.data.user));
         if (!response.data.user.emailVerified){
            navigate("/verification/link/email");
+        }else{
+          navigate("/dashboard");
         }
-        navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);
