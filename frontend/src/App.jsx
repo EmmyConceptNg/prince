@@ -1,39 +1,44 @@
 import { ToastContainer } from 'react-toastify'
 import { Routes } from './router/Index'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from './api/axios';
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-   const navigate = useNavigate();
- const [urlTokenSet, setUrlTokenSet] = useState(false);
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const response = await axios.get("/api/sessions", {
+          credentials: "include",
+        });
+        const { data } = response;
+        const sessionToken = data.token;
 
- useEffect(() => {
-   const fetchSession = async () => {
-     try {
-       const response = await axios.get("/api/sessions", {
-         credentials: "include",
-       });
-       const { data } = response;
-       const sessionToken = data.token;
+        // Parse the current URL
+        const urlParams = new URLSearchParams(location.search);
 
-       const url = new URL(window.location.href);
-       const params = new URLSearchParams(url.search);
+        // Update URL only if the token is missing or incorrect
+        if (urlParams.get("token") !== sessionToken) {
+          urlParams.set("token", sessionToken);
+          // Use `navigate` only if the token is not set or incorrect
+          navigate(`${location.pathname}?${urlParams.toString()}`, {
+            replace: true,
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching session:", error);
+      }
+    };
 
-       // Only set the token in the URL if it's not set or doesn't match
-       if (!urlTokenSet || params.get("token") !== sessionToken) {
-         params.set("token", sessionToken);
-         navigate(`?${params.toString()}`, { replace: true });
-         setUrlTokenSet(true); // Mark the token as set in the URL
-       }
-     } catch (error) {
-       console.error("Error fetching session:", error);
-     }
-   };
-
-   fetchSession();
- }, [urlTokenSet]);
+    // Call `fetchSession` only if the URL doesn't have a valid token
+    const urlParams = new URLSearchParams(location.search);
+    if (!urlParams.get("token")) {
+      fetchSession();
+    }
+  }, [location, navigate]);
 
   return (
     <>
