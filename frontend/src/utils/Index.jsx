@@ -6,10 +6,10 @@ export const newsletterValidation = Yup.object({
 
 
 export const pinValidation = Yup.object({
-  pin1: Yup.string().required("Required").length(1, "Invalid"),
-  pin2: Yup.string().required("Required").length(1, "Invalid"),
-  pin3: Yup.string().required("Required").length(1, "Invalid"),
-  pin4: Yup.string().required("Required").length(1, "Invalid"),
+  pin1: Yup.string().length(1, "Invalid"),
+  pin2: Yup.string().length(1, "Invalid"),
+  pin3: Yup.string().length(1, "Invalid"),
+  pin4: Yup.string().length(1, "Invalid"),
 });
 
 export const loginValidation = Yup.object({
