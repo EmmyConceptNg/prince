@@ -49,13 +49,7 @@ export default function Login() {
           navigate("/verification/link/email");
         } else {
           navigate("/dashboard");
-          //  const lastUrl = localStorage.getItem("lastUrl");
-          // if (lastUrl) {
-          //   navigate(lastUrl);
-          //   localStorage.removeItem("lastUrl");
-          // } else {
-          //   navigate("/dashboard");
-          // }
+          
         }
       })
       .catch((error) => {
@@ -67,7 +61,26 @@ export default function Login() {
 
   const handleLoginGoogle = (values, actions) => {
     actions.setSubmitting(true);
-    navigate("/dashboard");
+
+    axios
+      .post("/api/auth/login/google", values, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response.data.user);
+        dispatch(setUser(response.data.user));
+
+        if (response.data.user.emailVerified === false) {
+          navigate("/verification/link/email");
+        } else {
+          navigate("/dashboard");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        notify(error?.response?.data?.error, "error");
+      })
+      .finally(() => actions.setSubmitting(false));
   };
 
   const [googleUser, setGoogleUser] = useState([]);
@@ -98,7 +111,7 @@ export default function Login() {
               /* handle submission state */
             },
           };
-          handleLogin(
+          handleLoginGoogle(
             {
               email: res.data.email,
               emailVerified: res.data.verified_email,
