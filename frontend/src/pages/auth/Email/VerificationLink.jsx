@@ -35,7 +35,7 @@ export default function VerificationLink() {
               Check your email
             </Text>
             <Text fw="400" fs="16px" color="#fff" sx={{ textAlign: "center" }}>
-              We sent averification link to {user.email}
+              We sent a verification link to {user.email}
             </Text>
             <Button
               to="/verification/email"
