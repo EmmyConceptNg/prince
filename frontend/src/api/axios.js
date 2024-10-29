@@ -3,7 +3,7 @@ import axios from "axios";
 let baseURL = "";
 
 if (window.location.origin.includes("localhost")) {
-  baseURL = "http://localhost:8080";
+  baseURL = "http://localhost:5555";
 } else {
   baseURL = "https://prince-server-kck2.onrender.com";
 }
