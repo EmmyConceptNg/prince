@@ -26,8 +26,6 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
   "https://certriddle.com",
   "https://www.certriddle.com",
   "https://prince-i58e.onrender.com",
