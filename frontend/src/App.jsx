@@ -27,7 +27,7 @@ function App() {
             replace: true,
           });
         }
-localStorage.setItem("sessionValidated", true);
+        localStorage.setItem("sessionValidated", true);
         setSessionValidated(true);
       } catch (error) {
         console.error("Error fetching session:", error);
@@ -48,17 +48,16 @@ localStorage.setItem("sessionValidated", true);
               withCredentials: true,
             }
           );
-          localStorage.setItem('sessionValidated', true)
-            setSessionValidated(true);
-          
+          localStorage.setItem("sessionValidated", true);
+          setSessionValidated(true);
         } catch (err) {
           console.error("Validation error:", err);
-          Swal.fire({
-            icon: "error",
-            title: "Session Error",
-            text: "Session invalid or expired.",
-            showConfirmButton: true,
-          }).then(async () => {
+          // Swal.fire({
+          //   icon: "error",
+          //   title: "Session Error",
+          //   text: "Session invalid or expired.",
+          //   showConfirmButton: true,
+          // }).then(async () => {
             const regenResponse = await axios.get("/api/sessions/regenerate", {
               withCredentials: true,
             });
@@ -70,18 +69,14 @@ localStorage.setItem("sessionValidated", true);
             });
 
             fetchSession();
-          });
+          // });
         }
       }
     };
 
-    if (!localStorage.getItem("sessionValidated")) validateTokenOnce();
+    // if (!localStorage.getItem("sessionValidated"))
+    validateTokenOnce();
   }, [sessionValidated, location.pathname, navigate]);
-
-
-
-
-
 
   return (
     <>
