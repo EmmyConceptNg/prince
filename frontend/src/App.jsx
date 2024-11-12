@@ -76,7 +76,7 @@ function App() {
 
     // if (!localStorage.getItem("sessionValidated"))
     validateTokenOnce();
-  }, [sessionValidated, location.pathname]);
+  }, [ location.pathname, navigate]);
 
   return (
     <>
