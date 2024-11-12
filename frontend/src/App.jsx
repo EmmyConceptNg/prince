@@ -20,10 +20,10 @@ function App() {
        });
        const { token } = response.data;
 
-       const urlParams = new URLSearchParams(location.search);
+       const urlParams = new URLSearchParams(window.location.search);
        if (urlParams.get("token") !== token) {
          urlParams.set("token", token);
-         navigate(`${location.pathname}?${urlParams.toString()}`, {
+         navigate(`${window.location.pathname}?${urlParams.toString()}`, {
            replace: true,
          });
        }
@@ -35,19 +35,16 @@ function App() {
    };
 
    const validateTokenOnce = async () => {
-     const urlParams = new URLSearchParams(location.search);
+     const urlParams = new URLSearchParams(window.location.search);
      const tokenInURL = urlParams.get("token");
 
      if (!tokenInURL) {
        fetchSession();
      } else {
        try {
-         const res = await axios.get(
-           `/api/sessions/validate?token=${tokenInURL}`,
-           {
-             withCredentials: true,
-           }
-         );
+         await axios.get(`/api/sessions/validate?token=${tokenInURL}`, {
+           withCredentials: true,
+         });
          localStorage.setItem("sessionValidated", true);
          setSessionValidated(true);
        } catch (err) {
@@ -58,7 +55,7 @@ function App() {
          const newToken = regenResponse.data.token;
 
          urlParams.set("token", newToken);
-         navigate(`${location.pathname}?${urlParams.toString()}`, {
+         navigate(`${window.location.pathname}?${urlParams.toString()}`, {
            replace: true,
          });
 
@@ -67,21 +64,26 @@ function App() {
      }
    };
 
-   const handleNavigation = () => {
-     const urlParams = new URLSearchParams(location.search);
+   const ensureTokenInURL = () => {
+     const urlParams = new URLSearchParams(window.location.search);
      if (!urlParams.get("token")) {
        fetchSession();
      }
    };
 
-   window.addEventListener("popstate", handleNavigation);
+   window.addEventListener("popstate", ensureTokenInURL);
+   window.addEventListener("pushstate", ensureTokenInURL);
+   window.addEventListener("replacestate", ensureTokenInURL);
 
    validateTokenOnce();
 
    return () => {
-     window.removeEventListener("popstate", handleNavigation);
+     window.removeEventListener("popstate", ensureTokenInURL);
+     window.removeEventListener("pushstate", ensureTokenInURL);
+     window.removeEventListener("replacestate", ensureTokenInURL);
    };
  }, []);
+
 
 
   return (
