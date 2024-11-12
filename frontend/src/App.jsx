@@ -12,77 +12,75 @@ function App() {
 
   const [sessionValidated, setSessionValidated] = useState(false);
 
- useEffect(() => {
-   const fetchSession = async () => {
-     try {
-       const response = await axios.get("/api/sessions", {
-         withCredentials: true,
-       });
-       const { token } = response.data;
 
-       const urlParams = new URLSearchParams(window.location.search);
-       if (urlParams.get("token") !== token) {
-         urlParams.set("token", token);
-         navigate(`${window.location.pathname}?${urlParams.toString()}`, {
-           replace: true,
-         });
-       }
-       localStorage.setItem("sessionValidated", true);
-       setSessionValidated(true);
-     } catch (error) {
-       console.error("Error fetching session:", error);
-     }
-   };
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const response = await axios.get("/api/sessions", {
+          withCredentials: true,
+        });
+        const { token } = response.data;
 
-   const validateTokenOnce = async () => {
-     const urlParams = new URLSearchParams(window.location.search);
-     const tokenInURL = urlParams.get("token");
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("token") !== token) {
+          urlParams.set("token", token);
+          navigate(`${window.location.pathname}?${urlParams.toString()}`, {
+            replace: true,
+          });
+        }
+        localStorage.setItem("sessionValidated", true);
+        setSessionValidated(true);
+      } catch (error) {
+        console.error("Error fetching session:", error);
+      }
+    };
 
-     if (!tokenInURL) {
-       fetchSession();
-     } else {
-       try {
-         await axios.get(`/api/sessions/validate?token=${tokenInURL}`, {
-           withCredentials: true,
-         });
-         localStorage.setItem("sessionValidated", true);
-         setSessionValidated(true);
-       } catch (err) {
-         console.error("Validation error:", err);
-         const regenResponse = await axios.get("/api/sessions/regenerate", {
-           withCredentials: true,
-         });
-         const newToken = regenResponse.data.token;
+    const validateTokenOnce = async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenInURL = urlParams.get("token");
 
-         urlParams.set("token", newToken);
-         navigate(`${window.location.pathname}?${urlParams.toString()}`, {
-           replace: true,
-         });
+      if (!tokenInURL) {
+        fetchSession();
+      } else {
+        try {
+          await axios.get(`/api/sessions/validate?token=${tokenInURL}`, {
+            withCredentials: true,
+          });
+          localStorage.setItem("sessionValidated", true);
+          setSessionValidated(true);
+        } catch (err) {
+          console.error("Validation error:", err);
+          const regenResponse = await axios.get("/api/sessions/regenerate", {
+            withCredentials: true,
+          });
+          const newToken = regenResponse.data.token;
 
-         fetchSession();
-       }
-     }
-   };
+          urlParams.set("token", newToken);
+          navigate(`${window.location.pathname}?${urlParams.toString()}`, {
+            replace: true,
+          });
 
-   const ensureTokenInURL = () => {
-     const urlParams = new URLSearchParams(window.location.search);
-     if (!urlParams.get("token")) {
-       fetchSession();
-     }
-   };
+          fetchSession();
+        }
+      }
+    };
 
-   window.addEventListener("popstate", ensureTokenInURL);
-   window.addEventListener("pushstate", ensureTokenInURL);
-   window.addEventListener("replacestate", ensureTokenInURL);
+    validateTokenOnce();
 
-   validateTokenOnce();
+    // Example of using navigate with token
+    const handleNavigation = (path) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
+      if (token) {
+        navigate(`${path}?token=${token}`);
+      } else {
+        fetchSession();
+      }
+    };
 
-   return () => {
-     window.removeEventListener("popstate", ensureTokenInURL);
-     window.removeEventListener("pushstate", ensureTokenInURL);
-     window.removeEventListener("replacestate", ensureTokenInURL);
-   };
- }, []);
+    // Example usage of handleNavigation
+    // handleNavigation('/new-path');
+  }, [navigate]);
 
 
 
