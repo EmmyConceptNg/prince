@@ -12,71 +12,77 @@ function App() {
 
   const [sessionValidated, setSessionValidated] = useState(false);
 
-  useEffect(() => {
-    const fetchSession = async () => {
-      try {
-        const response = await axios.get("/api/sessions", {
-          withCredentials: true,
-        });
-        const { token } = response.data;
+ useEffect(() => {
+   const fetchSession = async () => {
+     try {
+       const response = await axios.get("/api/sessions", {
+         withCredentials: true,
+       });
+       const { token } = response.data;
 
-        const urlParams = new URLSearchParams(location.search);
-        if (urlParams.get("token") !== token) {
-          urlParams.set("token", token);
-          navigate(`${location.pathname}?${urlParams.toString()}`, {
-            replace: true,
-          });
-        }
-        localStorage.setItem("sessionValidated", true);
-        setSessionValidated(true);
-      } catch (error) {
-        console.error("Error fetching session:", error);
-      }
-    };
+       const urlParams = new URLSearchParams(location.search);
+       if (urlParams.get("token") !== token) {
+         urlParams.set("token", token);
+         navigate(`${location.pathname}?${urlParams.toString()}`, {
+           replace: true,
+         });
+       }
+       localStorage.setItem("sessionValidated", true);
+       setSessionValidated(true);
+     } catch (error) {
+       console.error("Error fetching session:", error);
+     }
+   };
 
-    const validateTokenOnce = async () => {
-      const urlParams = new URLSearchParams(location.search);
-      const tokenInURL = urlParams.get("token");
+   const validateTokenOnce = async () => {
+     const urlParams = new URLSearchParams(location.search);
+     const tokenInURL = urlParams.get("token");
 
-      if (!tokenInURL) {
-        fetchSession();
-      } else {
-        try {
-          const res = await axios.get(
-            `/api/sessions/validate?token=${tokenInURL}`,
-            {
-              withCredentials: true,
-            }
-          );
-          localStorage.setItem("sessionValidated", true);
-          setSessionValidated(true);
-        } catch (err) {
-          console.error("Validation error:", err);
-          // Swal.fire({
-          //   icon: "error",
-          //   title: "Session Error",
-          //   text: "Session invalid or expired.",
-          //   showConfirmButton: true,
-          // }).then(async () => {
-            const regenResponse = await axios.get("/api/sessions/regenerate", {
-              withCredentials: true,
-            });
-            const newToken = regenResponse.data.token;
+     if (!tokenInURL) {
+       fetchSession();
+     } else {
+       try {
+         const res = await axios.get(
+           `/api/sessions/validate?token=${tokenInURL}`,
+           {
+             withCredentials: true,
+           }
+         );
+         localStorage.setItem("sessionValidated", true);
+         setSessionValidated(true);
+       } catch (err) {
+         console.error("Validation error:", err);
+         const regenResponse = await axios.get("/api/sessions/regenerate", {
+           withCredentials: true,
+         });
+         const newToken = regenResponse.data.token;
 
-            urlParams.set("token", newToken);
-            navigate(`${location.pathname}?${urlParams.toString()}`, {
-              replace: true,
-            });
+         urlParams.set("token", newToken);
+         navigate(`${location.pathname}?${urlParams.toString()}`, {
+           replace: true,
+         });
 
-            fetchSession();
-          // });
-        }
-      }
-    };
+         fetchSession();
+       }
+     }
+   };
 
-    // if (!localStorage.getItem("sessionValidated"))
-    validateTokenOnce();
-  }, []);
+   const handleNavigation = () => {
+     const urlParams = new URLSearchParams(location.search);
+     if (!urlParams.get("token")) {
+       fetchSession();
+     }
+   };
+
+   window.addEventListener("popstate", handleNavigation);
+
+   validateTokenOnce();
+
+   return () => {
+     window.removeEventListener("popstate", handleNavigation);
+   };
+ }, []);
+
 
   return (
     <>
