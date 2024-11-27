@@ -14,6 +14,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy"; // Optional: Icon
 import moment from 'moment'
 import { notify } from "../../utils/Index";
 import { ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const columns = [
   { id: "sn", label: "S/N", minWidth: 10 },
@@ -26,10 +27,16 @@ export default function SubscriptionTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [emailList, setEmailList] = useState([]);
+  const token = useSelector(state => state.user.token)
 
   useEffect(() => {
     axios
-      .get("/api/auth/get-emails")
+      .get("/api/auth/get-emails", {
+        headers : {
+          "Content-Type" : 'application/json',
+          'Authorization' : 'Bearer '+ token
+        }
+      })
       .then((response) => setEmailList(response.data.users))
       .catch((error) => console.error("Error fetching emails:", error));
   }, []);

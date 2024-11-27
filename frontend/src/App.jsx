@@ -3,16 +3,16 @@ import { ToastContainer } from "react-toastify";
 import { Routes } from "./router/Index";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "./api/axios";
+import axios, { setupAxiosInterceptors } from "./api/axios";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const [sessionValidated, setSessionValidated] = useState(false);
-
-
+  
   useEffect(() => {
     const fetchSession = async () => {
       try {
@@ -81,8 +81,6 @@ function App() {
     // Example usage of handleNavigation
     // handleNavigation('/new-path');
   }, [navigate]);
-
-
 
   return (
     <>

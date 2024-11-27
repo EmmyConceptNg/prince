@@ -1,4 +1,5 @@
 import axios from "axios";
+import { clearUser } from "../redux/UserReducer";
 
 let baseURL = "";
 
@@ -12,9 +13,24 @@ const instance = axios.create({
   baseURL,
 });
 
-export default instance;
+// Function to set up interceptors
+export const setupAxiosInterceptors = (dispatch, navigate) => {
+  instance.interceptors.response.use(
+    (response) => response, // Simply return the response if successful
+    (error) => {
+      if (error.response && error.response.status === 403) {
+        // Log out user on 403 Forbidden
+        dispatch(clearUser()); // Replace with your actual Redux action
+        navigate("/login");
+      }
+      return Promise.reject(error); // Forward the error
+    }
+  );
+};
 
+// Function to construct full image URLs
 export const getImageUrl = (imagePath) => {
-  // Construct full URL for retrieving images
   return `${baseURL}/images/${imagePath}`;
 };
+
+export default instance;

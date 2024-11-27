@@ -15,6 +15,7 @@ import {
   getEmails,
 } from "../controllers/UserController.js";
 import { fileURLToPath } from "url";
+import { authenticateToken } from "../middleware/JWTMiddleware.js";
 
 const router = express.Router();
 
@@ -41,7 +42,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get("/get-emails", getEmails);
+router.get("/get-emails", authenticateToken, getEmails);
 router.post("/login", login);
 router.post("/login/google", loginGoogle);
 router.post("/register", register);

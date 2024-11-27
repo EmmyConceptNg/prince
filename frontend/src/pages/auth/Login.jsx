@@ -18,7 +18,7 @@ import { Icon } from "@iconify/react";
 
 import axios from "../../api/axios";
 import Footer from "../../components/layouts/Footer";
-import { setUser } from "../../redux/UserReducer";
+import { setToken, setUser } from "../../redux/UserReducer";
 import { useDispatch } from "react-redux";
 
 export default function Login() {
@@ -44,6 +44,7 @@ export default function Login() {
       .then((response) => {
         console.log(response.data.user);
         dispatch(setUser(response.data.user));
+        dispatch(setToken(response.data.token));
 
         if (response.data.user.emailVerified === false) {
           navigate("/verification/link/email");
@@ -253,7 +254,7 @@ export default function Login() {
                     Sign in with Google
                   </Button>
                 </Box>
-                <Box display="flex" justifyContent={"center"}>
+                {/* <Box display="flex" justifyContent={"center"}>
                   <Text
                     sx={{ textAlign: "center" }}
                     color="#fff"
@@ -275,7 +276,7 @@ export default function Login() {
                   >
                     SignUp
                   </Text>
-                </Box>
+                </Box> */}
               </Stack>
             </Box>
             <Box sx={{ alignSelf: "flex-end", width: "100%" }}>
