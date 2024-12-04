@@ -18,7 +18,7 @@ const InputField = styled(OutlinedInput)(({ isPin, height, sx }) => ({
     padding: "0 14px",
     outline: "none",
     backgroundColor: sx ? sx.bgcolor : "#fff",
-    color: isPin ? "#2DDB81" : "#667085",
+    color: isPin ? "#2DDB81" : "#FFFFFF",
     fontSize: isPin && "48px",
     "&::placeholder": {
       color: "#9AE1BC",
