@@ -79,7 +79,7 @@ export function Pagination() {
 }
 export function MobilePagination() {
   return (
-    <Stack direction="row" justifyContent="space-between" alignItems="center">
+    <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
       {/* Previos Button */}
       <Button
         sx={{ mt: 1 }}

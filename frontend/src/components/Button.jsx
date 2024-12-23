@@ -1,5 +1,5 @@
 import { LoadingButton } from "@mui/lab";
-import { Menu, MenuItem } from "@mui/material";
+import { Box, Menu, MenuItem, Stack } from "@mui/material";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -88,11 +88,25 @@ export default function Button({
           anchorEl={anchorEl}
           open={open}
           onClose={handleMenuClose}
-          onClick={handleMenuClose}
+          sx={{
+            "& .MuiPaper-root": {
+              backgroundColor: "#0C0E0D",
+              border: "1px solid #2DDB81",
+              width: "218px",
+              borderRadius: "10px",
+            },
+          }}
         >
           {dropdownItems.map((item, index) => (
-            <MenuItem key={index} onClick={item.onClick}>
-              {item.text}
+            <MenuItem
+              key={index}
+              onClick={item.onClick}
+              sx={{ color: "#84818A" }}
+            >
+              <Stack direction="row" spacing={2}>
+                {item?.startIcon}
+                <Box>{item.text}</Box>
+              </Stack>
             </MenuItem>
           ))}
         </Menu>

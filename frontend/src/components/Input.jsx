@@ -52,6 +52,11 @@ export default function Input({
   details,
   sx,
   defaultValue,
+  inputDirection="column",
+  inputGap,
+  labelSize,
+  multiline=false,
+  rows
 }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -72,50 +77,65 @@ export default function Input({
 
   return (
     <FormControl fullWidth sx={{ height }}>
-      {label && (
-        <label htmlFor={id} style={{ marginBottom: "10px" }}>
-          <Text fw="500" fs="14px" ml={5} color="#fff">
-            {label}
-          </Text>
-        </label>
-      )}
       <Box
-        sx={{
-          border: "1px solid #10281B",
-          borderRadius: "8px",
-        }}
+        display="flex"
+        flexDirection={inputDirection ? inputDirection : "column"}
+        alignItems={inputDirection == "row" ? "center" : ""}
+        justifyContent={inputDirection == "row" ? "space-between" : ""}
+        gap={inputDirection && inputGap ? inputGap : 0}
       >
-        <InputField
-          {...field}
-          onInput={onInput}
-          readOnly={readOnly}
-          inputProp={inputProp}
-          height={height}
-          type={inputType}
-          fullWidth
-          sx={{ width, ...sx }}
-          name={name}
-          required={required}
-          id={id}
-          isPin={isPin}
-          defaultValue={defaultValue}
-          endAdornment={
-            isPasswordField ? (
-              <InputAdornment position="end">
-                <IconButton
-                  sx={{ color: "#9AE1BC", padding: "5px" }} // Adjust padding to fit inside the input
-                  aria-label={`toggle ${name} visibility`}
-                  onClick={() => handleClickShowPassword(name)}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword[name] ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ) : null
-          }
-          placeholder={placeholder}
-        />
+        {label && (
+          <label htmlFor={id} style={{ marginBottom: "10px" }}>
+            <Text
+              fw="500"
+              fs={labelSize ? labelSize : "14px"}
+              ml={5}
+              color="#fff"
+            >
+              {label}
+            </Text>
+          </label>
+        )}
+        <Box
+          sx={{
+            border: "1px solid #10281B",
+            borderRadius: "8px",
+          }}
+        >
+          <InputField
+            {...field}
+            onInput={onInput}
+            readOnly={readOnly}
+            inputProp={inputProp}
+            height={height}
+            type={inputType}
+            fullWidth
+            multiline={multiline}
+            rows={rows}
+            sx={{ width, ...sx }}
+            name={name}
+            required={required}
+            id={id}
+            isPin={isPin}
+            defaultValue={defaultValue}
+            endAdornment={
+              isPasswordField ? (
+                <InputAdornment position="end">
+                  <IconButton
+                    sx={{ color: "#9AE1BC", padding: "5px" }} // Adjust padding to fit inside the input
+                    aria-label={`toggle ${name} visibility`}
+                    onClick={() => handleClickShowPassword(name)}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword[name] ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ) : null
+            }
+            placeholder={placeholder}
+          />
+        </Box>
       </Box>
       {meta.touched && meta.error ? (
         <Text fw="400" color="red" fs="0.75rem">
@@ -146,4 +166,9 @@ Input.propTypes = {
   sx: PropTypes.object,
   readOnly: PropTypes.bool,
   defaultValue: PropTypes.string,
+  labelSize: PropTypes.string,
+  inputDirection: PropTypes.string,
+  inputGap: PropTypes.string,
+  rows: PropTypes.number,
+  multiline: PropTypes.bool,
 };

@@ -23,6 +23,21 @@ export const loginValidation = Yup.object({
     )
     .matches(/[0-9]+/, "Password must contain at least one number."),
 });
+export const businessNameValidation = Yup.object({
+  email: Yup.string().email("Invalid email address").required("Required"),
+
+  name: Yup.string().required("Required"),
+  address: Yup.string().required("Required"),
+  no_employees: Yup.string().required("Required"),
+  tel: Yup.string().required("Required"),
+  founder_name: Yup.string().required("Required"),
+  url: Yup.string().url("invalid url").required("Required"),
+});
+
+export const aiQuestionnaireValidation = Yup.object().shape({
+  answer: Yup.string().required("Answer is required"),
+});
+
 export const passwordEmailValidation = Yup.object({
   email: Yup.string().email("Invalid email address").required("Required"),
 });

@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { scroller } from "react-scroll";
 
-export default function Home() {
+export default function Landing() {
   const location = useLocation();
 
   useEffect(() => {

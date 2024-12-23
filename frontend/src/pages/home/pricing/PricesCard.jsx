@@ -6,7 +6,7 @@ import ProfessionalIcon from "../../../../public/svgs/ProfessionalIcon";
 import EnterpriseIcon from "../../../../public/svgs/EnterpriseIcon";
 import Button from "../../../components/Button";
 
-export default function PricesCard({free=true}) {
+export default function PricesCard({free=true, auth=false, current=null}) {
   return (
     <Stack spacing={15}>
       <Grid
@@ -151,6 +151,21 @@ export default function PricesCard({free=true}) {
                     </Box>
                   ))}
                 </Stack>
+                {auth ? (
+                  <Button
+                    variant={current == index ? "outlined" : "contained"}
+                    color="#2DDB81"
+                    width="100%"
+                  >
+                    {current && current == index ? (
+                      <span style={{ color: "#FFFFFF73" }}>
+                        Your current plan
+                      </span>
+                    ) : (
+                      <span style={{ color: "#333333" }}>Upgrade</span>
+                    )}
+                  </Button>
+                ) : null}
               </Stack>
             </Box>
           </Grid>

@@ -4,8 +4,6 @@ import { Routes } from "./router/Index";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios, { setupAxiosInterceptors } from "./api/axios";
-import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
 
 function App() {
   const location = useLocation();
@@ -85,7 +83,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <Routes />
+        <Routes />
     </>
   );
 }
