@@ -6,7 +6,7 @@ import IdentifyAssets from "../../../../public/svgs/IdentifyAssets";
 import GatherInfo from "../../../../public/svgs/GatherInfo";
 import CategorizeRisk from "../../../../public/svgs/CategorizeRisk";
 import CompareRisk from "../../../../public/svgs/CompareRisk";
-import MakePlan from "../../../../public/svgs/makePlan";
+
 
 const nists = [
   {
