@@ -108,6 +108,7 @@ const dispatch = useDispatch();
               backgroundColor: "#000",
               boxShadow: "none",
               padding: 2,
+              display: {md:'none', xs: 'block'}
             }}
           >
             <Toolbar>
@@ -118,15 +119,8 @@ const dispatch = useDispatch();
                 onClick={handleDrawerToggle}
                 sx={{ mr: 2, display: { md: "none" } }}
               >
-                <Menu sx={{ color: "#000" }} />
+                <Menu sx={{ color: "#fff" }} />
               </IconButton>
-              <Box>
-                <Text fs="23px" fw="550" color="#fff">
-                  Overview
-                </Text>
-              </Box>
-              <Box sx={{ flexGrow: 1 }} />
-              <Nav />
             </Toolbar>
           </AppBar>
           <Box
@@ -135,7 +129,7 @@ const dispatch = useDispatch();
               minHeight: "calc(90vh)", // Adjusted to exclude app bar height
               ml: { md: `${drawerWidth}px` },
               minWidth: "100%",
-              marginTop: "80px",
+              marginTop: {md:0, xs :"80px"},
               p: { md: 5, lg: 6, sm: 2, xs: 1 },
               
             }}

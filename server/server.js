@@ -106,7 +106,7 @@ app.get("/api/sessions/validate", async (req, res) => {
     });
 
     if (!sessionDoc || new Date(sessionDoc.expires) < new Date()) {
-      return res.status(403).json({ valid: false });
+      return res.status(404).json({ valid: false });
     }
 
     res.json({ valid: true });

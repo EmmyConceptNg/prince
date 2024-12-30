@@ -87,11 +87,11 @@ const posts = [
   },
 ];
 
-function SupportTable(props) {
+function SupportTable({admin}) {
   return (
     <>
-      <Header />
-      <TicketTabs />
+      <Header admin={admin} />
+      <TicketTabs admin={admin} />
     </>
   );
 }
@@ -207,7 +207,7 @@ const TableX = ({ type = "all" }) => {
   );
 };
 
-function Header() {
+function Header({admin}) {
   return (
     <Box
       display="flex"
@@ -215,7 +215,7 @@ function Header() {
       justifyContent="space-between"
     >
       <Text fs="32px" fw="700" sx={{ color: "#fff" }}>
-        Customer Support
+        {admin ? "Support and Ticketing" : "Customer Support"}
       </Text>
 
       <Box
@@ -226,7 +226,7 @@ function Header() {
         gap={2}
       >
         <SearchInput width="250px" height="45px" placeholder="Search" />
-        <Button
+        {!admin && <Button
           width="180px"
           height="45px"
           type="button"
@@ -235,7 +235,7 @@ function Header() {
           variant="contained"
         >
           <span style={{ color: "#333333" }}>Open Ticket</span>
-        </Button>
+        </Button>}
       </Box>
     </Box>
   );
