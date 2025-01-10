@@ -138,16 +138,20 @@ export const register = async (req, res) => {
 
 export const resendMail = async (req, res) => {
   const { email } = req.params;
-  let otp = "";
 
   try {
     const user = await User.findOne({
       email: email,
     }).lean();
     if (user) {
-      otp = user.otp;
+     const otp = (Math.floor(Math.random() * 10000) + 10000)
+      .toString()
+      .substring(1);
+      user.otp = otp;
     }
-    sendMail(email, "Verication Code", html(user));
+    await user.save();
+    
+    sendMail(email, "Verification Code", html(user));
   } catch (err) {
     console.log(err);
   }

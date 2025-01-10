@@ -18,7 +18,7 @@ export default function VerificationLink() {
 
     axios.get(`/api/auth/email/resend/${user.email}`).then(() => {
       setSendMailBtn(false);
-    });
+    }).catch(error => setSendMailBtn(false));
   };
 
   return (

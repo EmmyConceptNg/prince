@@ -254,7 +254,7 @@ export default function Login() {
                     Sign in with Google
                   </Button>
                 </Box>
-                {/* <Box display="flex" justifyContent={"center"}>
+                <Box display="flex" justifyContent={"center"}>
                   <Text
                     sx={{ textAlign: "center" }}
                     color="#fff"
@@ -276,7 +276,7 @@ export default function Login() {
                   >
                     SignUp
                   </Text>
-                </Box> */}
+                </Box>
               </Stack>
             </Box>
             <Box sx={{ alignSelf: "flex-end", width: "100%" }}>

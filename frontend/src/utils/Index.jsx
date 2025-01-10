@@ -54,8 +54,8 @@ export const userValidation = Yup.object({
     )
     .matches(/[0-9]+/, "Password must contain at least one number.")
     .matches(
-      /[@$!%*?&]+/,
-      "Password must contain at least one special character (@, $, !, %, *, ?, &, _, etc.)."
+      /[@$!%*?&#]+/,
+      "Password must contain at least one special character (@, $, !, %, *, ?, &, #, _, etc.)."
     ),
 });
 
