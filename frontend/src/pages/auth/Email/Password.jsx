@@ -6,21 +6,20 @@ import { ToastContainer } from "react-toastify";
 
 import { useEffect, useState } from "react";
 
-
-
-
-
 import { Form, Formik } from "formik";
 import Text from "../../../components/Text";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
-import { passwordEmailValidation } from "../../../utils/Index";
+import { notify, passwordEmailValidation } from "../../../utils/Index";
 import { ArrowBack } from "@mui/icons-material";
 import Footer from "../../../components/layouts/Footer";
-
+import axios from "../../../api/axios";
+import { useSelector } from "react-redux";
 
 export default function Password() {
-  
+  const [sendMailBtn, setSendMailBtn] = useState(false);
+  const user = useSelector((state) => state.user.details);
+
   const initialValues = {
     email: "",
   };
@@ -30,7 +29,16 @@ export default function Password() {
   const handlePasswordEmail = (values, actions) => {
     actions.setSubmitting(true);
 
-    navigate("/reset-password/:email/success");
+    axios
+      .get(`/api/auth/password/reset/${values.email}`)
+      .then(() => {
+        notify("Email Send successfully", "success");
+        navigate(`/reset-password/${values.email}/success`);
+      })
+      .catch((error) => {
+        console.log(error);
+        actions.setSubmitting(false);
+      });
   };
 
   return (

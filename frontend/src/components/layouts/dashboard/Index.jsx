@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { setupAxiosInterceptors } from "../../../api/axios";
 import SearchInput from "../../Search";
 import Settings from "../../../../public/svgs/Settings";
+import { clearUser } from "../../../redux/UserReducer";
 
 export default function DashboardLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -60,7 +61,11 @@ export default function DashboardLayout() {
     setAnchorEl(null);
     navigate(link);
   };
-
+  const handleLogout = () =>{
+    clearUser()
+    navigate('/login')
+  }
+ 
   const drawerWidth = 200;
 
   const navItems = [
@@ -192,22 +197,19 @@ export default function DashboardLayout() {
 
                 <Box display="flex" alignItems="center" gap="12px">
                   <SearchInput width="242px" placeholder="Search" />
-                  <Box
-                    sx={{ cursor: "pointer" }}
-                    onClick={() => navigate("/dashboard/settings")}
-                  >
-                    <Settings />
-                  </Box>
+
                   <IconButton onClick={handleProfileMenuOpen}>
-                    <Box
-                      component="img"
-                      src="/svgs/default-img.svg"
-                      width="49px"
-                      height="49px"
-                      borderRadius="8px"
-                      sx={{ cursor: "pointer" }}
-                    />
+                    <Settings />
                   </IconButton>
+
+                  <Box
+                    component="img"
+                    src="/svgs/default-img.svg"
+                    width="49px"
+                    height="49px"
+                    borderRadius="8px"
+                    sx={{ cursor: "pointer" }}
+                  />
 
                   <Menu
                     anchorEl={anchorEl}
@@ -257,6 +259,13 @@ export default function DashboardLayout() {
                       onClick={() => handleNavigate("/dashboard/help-center")}
                     >
                       Help Center
+                    </MenuItem>
+                    <Divider sx={{ bgcolor: "#FFFFFF1A" }} />
+                    <MenuItem
+                      sx={{ color: "#fff" }}
+                      onClick={() => handleLogout()}
+                    >
+                      Logout
                     </MenuItem>
                   </Menu>
                 </Box>

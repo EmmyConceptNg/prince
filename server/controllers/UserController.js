@@ -144,15 +144,42 @@ export const resendMail = async (req, res) => {
     const _user = await User.findOne({
       email: email,
     }).lean();
-    
-      const otp = (Math.floor(Math.random() * 10000) + 10000)
-        .toString()
-        .substring(1);
-    
+
+    const otp = (Math.floor(Math.random() * 10000) + 10000)
+      .toString()
+      .substring(1);
+
     const user = await User.findOneAndUpdate({ email }, { otp }, { new: true });
 
-     sendMail(email, "Verification Code", html(user));
-    
+    sendMail(email, "Verification Code", html(user));
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const resetPassword = async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const _user = await User.findOne({
+      email: email,
+    }).lean();
+
+    if (!_user) {
+      return res.status(400).json({ error: "Could not find user" });
+    }
+
+    const otp = (Math.floor(Math.random() * 10000) + 10000)
+      .toString()
+      .substring(1);
+
+    const user = await User.findOneAndUpdate({ email }, { otp }, { new: true });
+
+    const mailIt = await sendMail(email, "Password Reset", html(user));
+    if (mailIt){
+      res
+        .status(200)
+        .json({ message: "Password Reset Mail Sent Successfully" });
+    }
   } catch (err) {
     console.log(err);
   }
