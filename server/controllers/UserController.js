@@ -44,7 +44,8 @@ export const login = async (req, res) => {
     })
     .status(200)
     .json({
-      user, token
+      user,
+      token,
     });
 };
 export const loginGoogle = async (req, res) => {
@@ -140,18 +141,18 @@ export const resendMail = async (req, res) => {
   const { email } = req.params;
 
   try {
-    const user = await User.findOne({
+    const _user = await User.findOne({
       email: email,
     }).lean();
-    if (user) {
-     const otp = (Math.floor(Math.random() * 10000) + 10000)
-      .toString()
-      .substring(1);
-      user.otp = otp;
-    }
-    await user.save();
     
-    sendMail(email, "Verification Code", html(user));
+      const otp = (Math.floor(Math.random() * 10000) + 10000)
+        .toString()
+        .substring(1);
+    
+    const user = await User.findOneAndUpdate({ email }, { otp }, { new: true });
+
+     sendMail(email, "Verification Code", html(user));
+    
   } catch (err) {
     console.log(err);
   }

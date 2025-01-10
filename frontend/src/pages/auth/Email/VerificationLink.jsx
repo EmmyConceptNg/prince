@@ -7,6 +7,8 @@ import Text from "../../../components/Text";
 import Button from "../../../components/Button";
 import Footer from "../../../components/layouts/Footer";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import { notify } from "../../../utils/Index";
 
 export default function VerificationLink() {
   const [sendMailBtn, setSendMailBtn] = useState(false);
@@ -19,10 +21,16 @@ export default function VerificationLink() {
     axios.get(`/api/auth/email/resend/${user.email}`).then(() => {
       setSendMailBtn(false);
     }).catch(error => setSendMailBtn(false));
+
+    setTimeout(() => {
+      setSendMailBtn(false);
+      notify('Mail resent successfully', "success")
+    }, 2000);
   };
 
   return (
     <>
+    <ToastContainer />
       <Box display="flex" justifyContent="center" component="form" mt={10}>
         <Box sx={{ mx: "auto" }} width={{ xs: "343px", sm: "360px" }}>
           <Box display="flex" justifyContent="center" mb="100px">
