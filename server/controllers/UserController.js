@@ -174,8 +174,14 @@ export const resetPassword = async (req, res) => {
 
     const user = await User.findOneAndUpdate({ email }, { otp }, { new: true });
 
-    const mailIt = await sendMail(email, "Password Reset", html(user));
-    if (mailIt){
+    const resetLink = `${process.env.APP_URL}/reset-password/${user.email}/token/${user.otp}`;
+
+    const mailIt = await sendMail(
+      email,
+      "Password Reset",
+      resetHtml(user, resetLink)
+    );
+    if (mailIt) {
       res
         .status(200)
         .json({ message: "Password Reset Mail Sent Successfully" });
@@ -183,6 +189,34 @@ export const resetPassword = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
+export const changePassword = async(req, res) => {
+  const { password, confirmPassword, email, token } = req.body;
+
+  if (password !== confirmPassword) {
+    return res.status(400).json({ error: "Password does not match" });
+  }
+
+  const checkEmailAndToken = await User.findOne({ email, otp: token });
+
+  if (!checkEmailAndToken) {
+    return res
+      .status(404)
+      .json({
+        error:
+          "Invalid Email or Token Expired. Please try resending the email link",
+      });
+  }
+
+  const salt = bcrypt.genSaltSync(12);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+  User.findOneAndUpdate(
+    { email },
+    { password: hashedPassword },
+    { new: true }
+  ).then((user) =>
+    res.status(200).json({ user, message: "Password Reset Successful" })
+  );
 };
 
 export const verifyMail = async (req, res) => {
@@ -400,6 +434,107 @@ const html = (user) => {
                                                      valign="middle"
                                                      style="font-family:'Poppins', sans-serif;color:#131C30;font-size:30px;line-height:24px;font-weight:400;letter-spacing:0px;padding:0;padding-bottom:30px;">
                                                      ${user.otp}</td>
+                                             </tr>
+                                            
+                                             <tr>
+                                                 <td data-resizable-height=""
+                                                     style="font-size:20px;height:20px;line-height:20px;">&nbsp;</td>
+                                             </tr>
+                                         </table>
+                                     </td>
+                                 </tr>
+                             </table>
+                         </td>
+                     </tr>
+                 </table>
+             </td>
+         </tr>
+     </table>
+ </center>
+`;
+};
+const resetHtml = (user, resetLink) => {
+  return ` <center>
+     <table data-group="Header" data-module="Center Logo" data-thumbnail="/editor/assets/local/thumbnails/2.png"
+         border="0" width="100%" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;">
+         <tr>
+             <td data-bgcolor="Body Bgcolor" align="center" valign="middle" bgcolor="#F1F1F1"
+                 style="background-color: #F1F1F1;">
+                 <table border="0" width="600" align="center" cellpadding="0" cellspacing="0" class="row"
+                     style="width:600px;max-width:600px;">
+                     <tr>
+                         <td data-bgcolor="Bgcolor" align="center" bgcolor="#FFFFFF"
+                             style="background-color: rgb(95, 193, 196);">
+                             <table width="520" border="0" cellpadding="0" cellspacing="0" align="center"
+                                 class="row" style="width:520px;max-width:520px;">
+                                 <tr>
+                                     <td align="center" class="container-padding">
+                                         <table border="0" width="100%" cellpadding="0" cellspacing="0"
+                                             align="center" style="width:100%; max-width:100%;">
+                                             <tr>
+                                                 <td data-resizable-height=""
+                                                     style="font-size:40px;height:40px;line-height:40px;">&nbsp;</td>
+                                             </tr>
+                                             <tr>
+                                                 <td align="center" valign="middle"><a href="${process.env.APP_URL}"
+                                                         style="text-decoration:none;border:0"><img data-image="Logo"
+                                                             width="140" border="0" alt="logo"
+                                                             style="width:140px;border:0px;display:inline!important;"
+                                                             src="{{ asset('assets/logo/gemrook-logo.png') }}"></a>
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                                 <td data-resizable-height=""
+                                                     style="font-size:20px;height:20px;line-height:20px;">&nbsp;</td>
+                                             </tr>
+                                         </table>
+                                     </td>
+                                 </tr>
+                             </table>
+                         </td>
+                     </tr>
+                 </table>
+             </td>
+         </tr>
+     </table>
+     <table data-group="Other Module" data-module="Info Description"
+         data-thumbnail="/editor/assets/local/thumbnails/8.png" border="0" width="100%" align="center"
+         cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;">
+         <tr>
+             <td data-bgcolor="Body Bgcolor" align="center" valign="middle" bgcolor="#F1F1F1"
+                 style="background-color: #F1F1F1;">
+                 <table border="0" width="600" align="center" cellpadding="0" cellspacing="0" class="row"
+                     style="width:600px;max-width:600px;">
+                     <tr>
+                         <td data-bgcolor="Bgcolor" align="center" bgcolor="#FFFFFF" style="background-color: #FFFFFF;">
+                             <table width="520" border="0" cellpadding="0" cellspacing="0" align="center"
+                                 class="row" style="width:520px;max-width:520px;">
+                                 <tr>
+                                     <td align="center" class="container-padding">
+                                         <table border="0" width="100%" cellpadding="0" cellspacing="0"
+                                             align="center" style="width:100%; max-width:100%;">
+                                             <tr>
+                                                 <td data-resizable-height=""
+                                                     style="font-size:20px;height:20px;line-height:20px;">&nbsp;</td>
+                                             </tr>
+                                             <tr>
+                                                 <td data-text="Title" data-font="Primary" align="center"
+                                                     valign="middle"
+                                                     style="font-family:'Poppins', sans-serif;color:#191919;font-size:32px;line-height:42px;font-weight:700;letter-spacing:0px;padding:0;padding-bottom:10px;">
+                                                     Welcome</td>
+                                             </tr>
+                                             <tr>
+                                                 <td data-text="Description" data-font="Primary" align="center"
+                                                     valign="middle"
+                                                     style="font-family:'Poppins', sans-serif;color:#939393;font-size:14px;line-height:24px;font-weight:400;letter-spacing:0px;padding:0;padding-bottom:30px;">
+                                                     Hello ${user.fullName} Click on the link below to reset your password</td>
+                                             </tr>
+                                             <tr>
+                                                 <td data-text="Description" data-font="Primary" align="center"
+                                                     valign="middle"
+                                                     style="font-family:'Poppins', sans-serif;color:#131C30;font-size:30px;line-height:24px;font-weight:400;letter-spacing:0px;padding:0;padding-bottom:30px;">
+                                                     <a href="${resetLink}">Reset Password </a>
+                                                     </td>
                                              </tr>
                                             
                                              <tr>

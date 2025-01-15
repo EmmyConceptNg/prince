@@ -14,6 +14,7 @@ import {
   updateDocument,
   getEmails,
   resetPassword,
+  changePassword,
 } from "../controllers/UserController.js";
 import { fileURLToPath } from "url";
 import { authenticateToken } from "../middleware/JWTMiddleware.js";
@@ -65,4 +66,5 @@ router.post(
 );
 
 router.get("/password/reset/:email", resetPassword);
+router.post("/password-reset", changePassword);
 export default router;

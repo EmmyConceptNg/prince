@@ -59,6 +59,24 @@ export const userValidation = Yup.object({
     ),
 });
 
+export const passwordValidation = Yup.object({
+  password: Yup.string()
+    .required("Password is required.")
+    .min(8, "Password must be at least 8 characters long.")
+    .matches(
+      /[a-zA-Z]/,
+      "Password must contain both upper and lower case letters."
+    )
+    .matches(/[0-9]+/, "Password must contain at least one number.")
+    .matches(
+      /[@$!%*?&#]+/,
+      "Password must contain at least one special character (@, $, !, %, *, ?, &, #, _, etc.)."
+    ),
+  confirmPassword: Yup.string()
+    .required("Password confirmation is required.")
+    .oneOf([Yup.ref("password"), null], "Passwords must match."),
+});
+
 
 
 

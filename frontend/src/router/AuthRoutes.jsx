@@ -19,6 +19,7 @@ export const AuthRoutes = () => {
     { path: "/reset-password/email/sent/:email", element: <MailSent /> },
     { path: "/reset-password/:email", element: <ResetPassword /> },
     { path: "/reset-password/:email/success", element: <ResetSuccess /> },
+    { path: "/reset-password/:email/token/:token", element: <ResetPassword /> },
     { path: "/verification/link/:email", element: <VerificationLink /> },
     { path: "/verification/:email", element: <VerificationEmail /> },
     { path: "/verification/:email/verified", element: <VerifiedSuccess /> },
