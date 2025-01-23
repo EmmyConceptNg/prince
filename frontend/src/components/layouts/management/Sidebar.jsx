@@ -48,9 +48,7 @@ export const Sidebar = () => {
         </Box>
 
         <Box mt={5} sx={{ bgcolor : '#191919' }}>
-          {user?.subscriptionPlan.name === "Basic" ||
-          user?.subscriptionPlan.name === "Pro"
-            ? MenuItems.map((item) => {
+          {MenuItems.map((item) => {
                 const selected = location.pathname.includes(item?.link);
                 return (
                   <Box key={item.id}>
@@ -138,8 +136,8 @@ export const Sidebar = () => {
                     )}
                   </Box>
                 );
-              })
-            : null}
+          })
+            }
         </Box>
       </Box>
     </div>
